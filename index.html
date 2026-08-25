@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sintetizza Eventos | Estruturas, Som, Luz, Vídeo e Climatização</title>
+  <meta name="description" content="Locação de palcos, tendas, som, iluminação, painéis de LED e geradores para eventos.">
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- Header Injetado via JS -->
+  <div id="site-header-container"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Coluna de Informações -->
+        <div>
+          <div class="hero-tag">
+            <span class="badge badge-brand">Infraestrutura para Eventos</span>
+          </div>
+          <h1 class="hero-title">
+            Estrutura Completa para o seu <span class="highlight">Evento</span>
+          </h1>
+          <p class="hero-desc">
+            Palcos Box Truss, tendas, sonorização line array, painéis de LED, climatizadores e geradores com suporte técnico e ART.
+          </p>
+
+          <div class="hero-actions">
+            <a href="orcamento.html" class="btn btn-primary btn-lg">
+              <span>Solicitar Orçamento</span>
+            </a>
+            <a href="produtos.html" class="btn btn-dark btn-lg">
+              <span>Ver Catálogo</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">+500</div>
+              <div class="stat-label">Eventos Realizados</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Com ART & Normas NR</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">24h</div>
+              <div class="stat-label">Plantão Operacional</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Visual / Espaço Vazio para Imagem / Destaque -->
+        <div class="hero-visual-card">
+          <div style="margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between;">
+            <span class="badge badge-brand">Destaque</span>
+            <span style="color: var(--color-text-secondary); font-size: 0.85rem;">Sorocaba e Região</span>
+          </div>
+          <div class="image-placeholder" style="min-height: 180px; margin-bottom: 14px;">
+            <span style="font-size: 0.95rem; font-weight: 700; color: var(--color-text-primary);">[ Espaço para Imagem Principal ]</span>
+            <span class="image-placeholder-label">800 x 500px</span>
+          </div>
+          <h3 style="color: var(--color-text-primary); font-size: 1.15rem; margin-bottom: 6px;">Engenharia e Estrutura</h3>
+          <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin-bottom: 16px; line-height: 1.5;">
+            Montagem e coordenação técnica de palcos, tendas, som, iluminação e vídeo para feiras, shows e eventos corporativos.
+          </p>
+          <a href="produtos.html" class="btn btn-outline-brand btn-block">
+            Ver Todos os Itens ➔
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorias Rápidas -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Categorias</span>
+        <h2 class="section-title">Soluções por Segmento</h2>
+        <p class="section-desc">Selecione uma categoria para visualizar os equipamentos disponíveis.</p>
+      </div>
+
+      <div class="grid grid-4">
+        <a href="produtos.html?cat=estruturas" class="feature-card">
+          <h3 class="feature-title">Palcos & Box Truss</h3>
+          <p class="feature-desc">Estruturas de alumínio Q30 e Q50.</p>
+        </a>
+
+        <a href="produtos.html?cat=coberturas" class="feature-card">
+          <h3 class="feature-title">Tendas & Galpões</h3>
+          <p class="feature-desc">Tendas piramidais e galpões modulares.</p>
+        </a>
+
+        <a href="produtos.html?cat=audio" class="feature-card">
+          <h3 class="feature-title">Sonorização</h3>
+          <p class="feature-desc">Line Array e som profissional.</p>
+        </a>
+
+        <a href="produtos.html?cat=audiovisual" class="feature-card">
+          <h3 class="feature-title">Painéis de LED</h3>
+          <p class="feature-desc">Telas de alta definição P3.9.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produtos em Destaque -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="flex items-center justify-between" style="margin-bottom: var(--space-2xl); flex-wrap: wrap; gap: var(--space-md);">
+        <div>
+          <span class="section-subtitle">Destaques</span>
+          <h2 class="section-title">Equipamentos Mais Pedidos</h2>
+        </div>
+        <a href="produtos.html" class="btn btn-outline">
+          Ver Catálogo Completo ➔
+        </a>
+      </div>
+
+      <div class="grid grid-3" id="home-featured-products-grid"></div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Diferenciais</span>
+        <h2 class="section-title">Garantias Técnicas</h2>
+        <p class="section-desc">Padrões de segurança e conformidade para seu evento.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="differentiator-card">
+          <h3>ART / CREA Inclusa</h3>
+          <p>Acompanhamento técnico e emissão de ART assinada por engenheiro responsável.</p>
+        </div>
+
+        <div class="differentiator-card">
+          <h3>Logística Própria</h3>
+          <p>Frota própria para entrega, montagem e desmontagem pontual no cronograma.</p>
+        </div>
+
+        <div class="differentiator-card">
+          <h3>Equipe NR-10 & NR-35</h3>
+          <p>Montadores e operadores certificados com EPIs e normas de segurança.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Passo a Passo -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Passo a Passo</span>
+        <h2 class="section-title">Como Funciona o Orçamento</h2>
+        <p class="section-desc">Processo simples para receber sua proposta técnica.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step-card">
+          <div class="step-badge">1</div>
+          <h3 class="step-title">Selecione os Itens</h3>
+          <p class="step-desc">Adicione palcos, som, luz ou tendas à lista.</p>
+        </div>
+
+        <div class="process-step-card">
+          <div class="step-badge">2</div>
+          <h3 class="step-title">Dados do Evento</h3>
+          <p class="step-desc">Informe a data, cidade e tipo de evento.</p>
+        </div>
+
+        <div class="process-step-card">
+          <div class="step-badge">3</div>
+          <h3 class="step-title">Envio Imediato</h3>
+          <p class="step-desc">Envie diretamente no WhatsApp ou por e-mail.</p>
+        </div>
+
+        <div class="process-step-card">
+          <div class="step-badge">4</div>
+          <h3 class="step-title">Proposta Formal</h3>
+          <p class="step-desc">Receba o orçamento detalhado da equipe técnica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner CTA -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="cta-banner">
+        <span class="badge badge-brand" style="margin-bottom: 12px;">Solicite sua Proposta</span>
+        <h2 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem); margin-bottom: 10px;">
+          Precisa de Equipamentos para o seu Evento?
+        </h2>
+        <p style="font-size: 0.95rem; max-width: 580px; margin: 0 auto 20px auto;">
+          Monte sua lista de itens ou fale diretamente com um consultor comercial.
+        </p>
+        <div class="flex items-center justify-center gap-md" style="flex-wrap: wrap;">
+          <a href="orcamento.html" class="btn btn-primary btn-lg">
+            <span>Montar Orçamento</span>
+          </a>
+          <a href="https://wa.me/5515998353108" target="_blank" class="btn btn-dark btn-lg">
+            <span>WhatsApp: (15) 99835-3108</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Injetado via JS -->
+  <div id="site-footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
