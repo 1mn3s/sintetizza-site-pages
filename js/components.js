@@ -28,7 +28,7 @@ function renderHeader(activePage = "home") {
       <div class="container top-trust-container">
         <div class="top-trust-left">
           <span><strong>Plantão 24h & ART Inclusa</strong> | Sorocaba e Região SP</span>
-          <span class="top-trust-rating">★ 4.9 no Google (+128 avaliações)</span>
+          <span class="top-trust-rating">4,9/5 no Google (+128 avaliações)</span>
         </div>
         <div class="top-trust-right">
           <a href="tel:${SINTETIZZA_CONFIG.phoneRaw}" class="top-trust-link" title="Ligar para a Sintetizza">
@@ -46,8 +46,8 @@ function renderHeader(activePage = "home") {
       <div class="container header-container">
         <a href="index.html" class="brand-logo-link" title="Sintetizza Eventos - Início">
           <picture>
-            <source srcset="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/logo.webp" type="image/webp">
-            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/logo.png" alt="Sintetizza Eventos - Estruturas e Soluções" class="brand-logo-img" width="170" height="36" loading="eager" decoding="async">
+            <source srcset="assets/images/logo.webp" type="image/webp">
+            <img src="assets/images/logo.png" alt="Sintetizza Eventos - Estruturas e Soluções" class="brand-logo-img" width="170" height="36" loading="eager" decoding="async">
           </picture>
         </a>
 
@@ -69,7 +69,7 @@ function renderHeader(activePage = "home") {
           </a>
 
           <a href="https://wa.me/${SINTETIZZA_CONFIG.whatsappNumber}?text=${encodeURIComponent(SINTETIZZA_CONFIG.whatsappDefaultMsg)}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm hide-mobile" title="Falar no WhatsApp">
-            <span>WhatsApp ➔</span>
+            <span>WhatsApp</span>
           </a>
 
           <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Abrir Menu de Navegação" aria-expanded="false">
@@ -89,19 +89,19 @@ function renderHeader(activePage = "home") {
 
         <nav class="mobile-nav-links">
           <a href="index.html" class="mobile-nav-item ${activePage === 'home' ? 'active' : ''}">
-            <span>Início</span> ➔
+            <span>Início</span>
           </a>
           <a href="produtos.html" class="mobile-nav-item ${activePage === 'produtos' ? 'active' : ''}">
-            <span>Catálogo de Equipamentos</span> ➔
+            <span>Catálogo de Equipamentos</span>
           </a>
           <a href="orcamento.html" class="mobile-nav-item ${activePage === 'orcamento' ? 'active' : ''}">
             <span>Solicitar Orçamento</span> <span class="badge badge-brand">${count}</span>
           </a>
           <a href="quem-somos.html" class="mobile-nav-item ${activePage === 'quem-somos' ? 'active' : ''}">
-            <span>Quem Somos & Laudos ART</span> ➔
+            <span>Quem Somos & Laudos ART</span>
           </a>
           <a href="contato.html" class="mobile-nav-item ${activePage === 'contato' ? 'active' : ''}">
-            <span>Contato & Localização</span> ➔
+            <span>Contato & Localização</span>
           </a>
         </nav>
         
@@ -191,18 +191,18 @@ function renderFooter() {
   if (!footerElem) return;
 
   const clientLogos = [
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.27.jpeg", alt: "Cliente atendido pela Sintetizza" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(1).jpeg", alt: "Logo de cliente da Sintetizza" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(10).jpeg", alt: "Logo de cliente atendido em eventos" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(12).jpeg", alt: "Marca cliente da Sintetizza" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(14).jpeg", alt: "Cliente corporativo atendido pela Sintetizza" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(17).jpeg", alt: "Cliente de infraestrutura para eventos" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(20).jpeg", alt: "Logo de cliente parceiro da Sintetizza" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(23).jpeg", alt: "Cliente parceiro em eventos e ativações" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(24).jpeg", alt: "Cliente institucional da Sintetizza" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(25).jpeg", alt: "Marca já atendida em eventos" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(27).jpeg", alt: "Cliente com eventos realizados pela Sintetizza" },
-    { src: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(29).jpeg", alt: "Parceiro de eventos atendido pela Sintetizza" }
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.27.jpeg", alt: "Cliente atendido pela Sintetizza" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(1).jpeg", alt: "Logo de cliente da Sintetizza" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(10).jpeg", alt: "Logo de cliente atendido em eventos" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(12).jpeg", alt: "Marca cliente da Sintetizza" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(14).jpeg", alt: "Cliente corporativo atendido pela Sintetizza" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(17).jpeg", alt: "Cliente de infraestrutura para eventos" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(20).jpeg", alt: "Logo de cliente parceiro da Sintetizza" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(23).jpeg", alt: "Cliente parceiro em eventos e ativações" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(24).jpeg", alt: "Cliente institucional da Sintetizza" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(25).jpeg", alt: "Marca já atendida em eventos" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(27).jpeg", alt: "Cliente com eventos realizados pela Sintetizza" },
+    { src: "Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(29).jpeg", alt: "Parceiro de eventos atendido pela Sintetizza" }
   ];
   const footerLogos = clientLogos.map(({ src, alt }) => `<img src="${src}" alt="${alt}" loading="lazy">`).join("");
   const footerLogosDuplicate = clientLogos.map(({ src }) => `<img src="${src}" alt="" loading="lazy">`).join("");
@@ -460,7 +460,7 @@ function createProductCardHTML(product) {
     ? product.specs.slice(0, 2).map(s => `<span class="spec-chip">${s.label}: <strong>${s.value}</strong></span>`).join("")
     : "";
 
-  const imageSrc = product.image || "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/principal-novo-2.png";
+  const imageSrc = product.image || "assets/images/principal-novo-2.png";
 
   return `
     <article class="product-card" data-product-id="${product.id}">
