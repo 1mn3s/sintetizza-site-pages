@@ -1,6 +1,6 @@
 /**
  * =============================================================================
- * SINTETIZZA - SCRIPT PRINCIPAL (PROFISSIONAL & CORPORATIVO)
+ * SINTETIZZA - SCRIPT PRINCIPAL (ROTEAMENTO, REVIEWS, FAQ & EVENTOS)
  * =============================================================================
  */
 
@@ -13,55 +13,63 @@ document.addEventListener("DOMContentLoaded", () => {
   else if (path.includes("orcamento")) activePage = "orcamento";
   else if (path.includes("contato")) activePage = "contato";
 
+  // Componentes Globais
   renderHeader(activePage);
   renderFooter();
   renderFloatingQuoteButton();
+  renderMobileStickyBar();
 
+  // Inicialização de Páginas
   initHomePage();
   initProductsPage();
   initProductDetailPage();
   initContactPage();
+  initScrollReveal();
+  initHeroImageRotation();
 });
+
+function initHeroImageRotation() {
+  const slides = [...document.querySelectorAll(".hero-background-slide")];
+  if (slides.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let activeIndex = 0;
+  window.setInterval(() => {
+    slides[activeIndex].classList.remove("is-active");
+    activeIndex = (activeIndex + 1) % slides.length;
+    slides[activeIndex].classList.add("is-active");
+  }, 7000);
+}
 
 // 1. Página Inicial (Home)
 function initHomePage() {
+  if (document.body.classList.contains("home-page")) {
+    document.documentElement.classList.add("screen-scroll");
+  }
+
+  const strategicGrid = document.getElementById("home-strategic-groups-grid");
+  if (strategicGrid) {
+    strategicGrid.innerHTML = HOME_STRATEGIC_GROUPS.map(group => createStrategicGroupCardHTML(group)).join("");
+  }
+
   const featuredGrid = document.getElementById("home-featured-products-grid");
   if (featuredGrid) {
-    const featured = PRODUCTS.filter(p => p.isFeatured).slice(0, 6);
+    const featuredPriority = [
+      "porticos-backdrops-estruturas-visuais",
+      "painel-led-p39-outdoor-indoor",
+      "tenda-piramidal-reforcada"
+    ];
+    const featured = [
+      ...featuredPriority.map(id => getProductById(id)).filter(Boolean),
+      ...PRODUCTS.filter(p => p.isFeatured && !featuredPriority.includes(p.id))
+    ].slice(0, 4);
     featuredGrid.innerHTML = featured.map(p => createProductCardHTML(p)).join("");
   }
 
-  // Hero Spotlight Card Dinâmico
-  const heroSpotlight = document.getElementById("hero-spotlight-container");
-  if (heroSpotlight) {
-    const spotlightItem = PRODUCTS[0]; // Box Truss Palco ou Painel de LED
-    const isAdded = QuoteCart.hasItem(spotlightItem.id);
-    const imgSrc = spotlightItem.image || "assets/images/original/principal-novo-2.png";
+  // Renderiza Avaliações Google
+  renderGoogleReviewsGrid("home-google-reviews-grid");
 
-    heroSpotlight.innerHTML = `
-      <div style="margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
-        <span class="badge badge-brand">Equipamento em Destaque</span>
-        <span style="color: var(--color-slate-400); font-size: 0.85rem; font-weight: 600;">Sorocaba e Região SP</span>
-      </div>
-      <div class="hero-card-image-wrap">
-        <img src="${imgSrc}" alt="${spotlightItem.name}" loading="lazy">
-      </div>
-      <h3 style="color: var(--color-white); font-size: 1.2rem; margin-bottom: 6px; font-weight: 800;">
-        ${spotlightItem.name}
-      </h3>
-      <p style="color: var(--color-slate-300); font-size: 0.88rem; margin-bottom: 16px; line-height: 1.5;">
-        ${spotlightItem.shortDesc}
-      </p>
-      <div class="flex gap-sm">
-        <button class="btn btn-primary btn-sm flex-grow ${isAdded ? 'added' : ''}" onclick="handleToggleQuote('${spotlightItem.id}', this)">
-          ${isAdded ? '✓ No Orçamento' : '+ Adicionar ao Orçamento'}
-        </button>
-        <a href="produto-detalhe.html?id=${spotlightItem.id}" class="btn btn-outline-white btn-sm">
-          Ver Ficha
-        </a>
-      </div>
-    `;
-  }
+  // Renderiza FAQ Accordion
+  renderFAQAccordion("home-faq-accordion");
 }
 
 // 2. Catálogo de Produtos
@@ -132,17 +140,17 @@ function initProductsPage() {
     if (list.length === 0) {
       catalogGrid.innerHTML = `
         <div class="empty-catalog-state">
-          <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Nenhum equipamento encontrado</h3>
-          <p style="color: var(--color-slate-600); margin-bottom: 20px;">
-            Não encontrou o que procura? Montamos projetos personalizados sob medida.
-          </p>
+          <h3>Nenhum item encontrado</h3>
+          <p style="color: var(--color-text-secondary); margin-bottom: 16px;">Tente outra busca ou solicite uma cotação personalizada.</p>
           <a href="orcamento.html" class="btn btn-primary">Solicitar Orçamento Personalizado</a>
         </div>
       `;
+      initScrollReveal(catalogGrid);
       return;
     }
 
     catalogGrid.innerHTML = list.map(p => createProductCardHTML(p)).join("");
+    initScrollReveal(catalogGrid);
   }
 
   applyCatalogFilters();
@@ -165,34 +173,37 @@ function initProductDetailPage() {
   if (breadcrumbProduct) breadcrumbProduct.textContent = product.name;
 
   const isAdded = QuoteCart.hasItem(product.id);
-  const imgSrc = product.image || product.fallbackImage || "assets/images/original/principal-novo-2.png";
-  const fallbackSrc = product.fallbackImage || "assets/images/original/principal-novo-2.png";
-
+  const imgSrc = product.image || product.fallbackImage || "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/principal-novo-2.png";
   detailContainer.innerHTML = `
     <div class="product-detail-grid">
-      
-      <!-- Galeria com Imagem Real -->
+      <!-- Galeria Otimizada com Foto Real -->
       <div class="product-gallery">
-        <img src="${imgSrc}" 
-             alt="${product.name}" 
-             id="detail-main-image"
-             onerror="if (this.src !== '${fallbackSrc}') { this.src = '${fallbackSrc}'; }">
-        <span class="badge badge-brand" style="position: absolute; top: 16px; left: 16px;">${product.categoryLabel}</span>
+        <img src="${imgSrc}"
+             alt="${product.name} - Sintetizza Eventos" 
+             class="product-detail-hero-img" 
+             loading="eager" 
+             decoding="async" 
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="image-placeholder" style="display: none; min-height: 320px; border: none; background: transparent;">
+          <span style="font-size: 1.15rem; font-weight: 800; color: var(--color-text-primary); margin-bottom: 4px;">${product.name}</span>
+          <span class="badge badge-brand" style="margin-bottom: 8px;">${product.categoryLabel}</span>
+          <span class="image-placeholder-label">[ Foto Técnica do Equipamento ]</span>
+        </div>
       </div>
 
-      <!-- Informações do Produto -->
+      <!-- Informações do Equipamento -->
       <div class="product-detail-info">
         <div>
-          <span class="section-subtitle">${product.categoryLabel}</span>
-          <h1 style="font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 12px; color: var(--color-slate-950);">${product.name}</h1>
-          <p style="font-size: 1.05rem; color: var(--color-slate-600); line-height: 1.65;">
+          <span class="badge badge-brand" style="margin-bottom: 10px;">${product.categoryLabel}</span>
+          <h1 style="font-size: clamp(1.7rem, 2.5vw, 2.3rem); margin-bottom: 10px;">${product.name}</h1>
+          <p style="font-size: 1rem; color: var(--color-text-secondary); line-height: 1.6;">
             ${product.fullDesc || product.shortDesc}
           </p>
         </div>
 
-        <!-- Especificações -->
+        <!-- Especificações Técnicas -->
         <div>
-          <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--color-slate-950); border-bottom: 2px solid var(--color-brand); display: inline-block; padding-bottom: 4px;">
+          <h3 style="font-size: 1.1rem; margin-bottom: 10px; border-bottom: 2px solid var(--color-brand-primary); display: inline-block; padding-bottom: 4px;">
             Especificações Técnicas
           </h3>
           <table class="detail-specs-table">
@@ -207,37 +218,40 @@ function initProductDetailPage() {
           </table>
         </div>
 
-        <!-- O que está incluso -->
-        <div style="background: var(--color-slate-50); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--color-border-light);">
-          <h4 style="font-size: 1rem; margin-bottom: 10px; color: var(--color-slate-950);">Itens Inclusos na Locação:</h4>
+        <!-- Itens Inclusos & Garantia -->
+        <div>
+          <h4 style="font-size: 1rem; margin-bottom: 8px;">Diferenciais & O que está incluso:</h4>
           <ul style="display: flex; flex-direction: column; gap: 8px;">
             ${product.features.map(f => `
-              <li style="display: flex; align-items: center; gap: 10px; font-size: 0.92rem; color: var(--color-slate-700);">
-                <span style="color: var(--color-brand); font-weight: 800; font-size: 1.1rem;">✓</span>
+              <li style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+                <span style="color: var(--color-brand-primary); font-weight: 800;">✓</span>
                 <span>${f}</span>
               </li>
             `).join("")}
+            <li style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+              <span style="color: var(--color-brand-primary); font-weight: 800;">✓</span>
+              <span>Emissão de ART / CREA e equipe homologada</span>
+            </li>
           </ul>
         </div>
 
-        <!-- Ação de Orçamento -->
+        <!-- Caixa de Ação do Orçamento -->
         <div class="quote-action-box">
           <div class="flex items-center justify-between">
-            <span style="font-weight: 800; color: var(--color-slate-950); font-size: 1rem;">Quantidade Necessária:</span>
+            <span style="font-weight: 700; color: var(--color-text-primary);">Quantidade Necessária:</span>
             <div class="quote-qty-controls">
-              <button type="button" class="qty-btn" id="detail-qty-minus" aria-label="Diminuir">-</button>
+              <button type="button" class="qty-btn" id="detail-qty-minus" aria-label="Diminuir quantidade">-</button>
               <span class="qty-display" id="detail-qty-value">1</span>
-              <button type="button" class="qty-btn" id="detail-qty-plus" aria-label="Aumentar">+</button>
+              <button type="button" class="qty-btn" id="detail-qty-plus" aria-label="Aumentar quantidade">+</button>
             </div>
           </div>
 
           <div class="flex flex-col gap-sm">
             <button class="btn btn-primary btn-block btn-lg" id="detail-btn-add-quote">
-              ${isAdded ? '✓ No Orçamento (Adicionar Mais)' : '+ Adicionar à Lista de Orçamento'}
+              ${isAdded ? '✓ Adicionado! (Adicionar Mais)' : '+ Adicionar ao Orçamento'}
             </button>
-            
-            <a href="https://wa.me/${SINTETIZZA_CONFIG.whatsappNumber}?text=Ol%C3%A1%2C+gostaria+de+consultar+a+disponibilidade+de%3A+${encodeURIComponent(product.name)}" target="_blank" class="btn btn-whatsapp btn-block">
-              Tirar Dúvida no WhatsApp
+            <a href="orcamento.html" class="btn btn-dark btn-block">
+              Ver Orçamento Completo ➔
             </a>
           </div>
         </div>
@@ -246,13 +260,15 @@ function initProductDetailPage() {
     </div>
   `;
 
-  let currentQty = 1;
-  const qtyDisplay = document.getElementById("detail-qty-value");
+  // Interatividade do Detalhe
   const btnMinus = document.getElementById("detail-qty-minus");
   const btnPlus = document.getElementById("detail-qty-plus");
+  const qtyDisplay = document.getElementById("detail-qty-value");
   const btnAdd = document.getElementById("detail-btn-add-quote");
 
   if (btnMinus && btnPlus && qtyDisplay && btnAdd) {
+    let currentQty = 1;
+
     btnMinus.addEventListener("click", () => {
       if (currentQty > 1) {
         currentQty--;
@@ -267,7 +283,7 @@ function initProductDetailPage() {
 
     btnAdd.addEventListener("click", () => {
       QuoteCart.addItem(product.id, currentQty);
-      showToast(`+${currentQty}x "${product.name}" adicionado ao orçamento!`, "success");
+      showToast(`+${currentQty}x ${product.name} adicionado ao orçamento!`, "success");
       btnAdd.innerHTML = "✓ Adicionado! Adicionar Mais";
     });
   }
@@ -280,6 +296,7 @@ function initProductDetailPage() {
     } else {
       relatedGrid.innerHTML = related.map(p => createProductCardHTML(p)).join("");
     }
+    initScrollReveal(relatedGrid);
   }
 }
 
@@ -297,22 +314,24 @@ function initContactPage() {
     const message = form.message.value.trim();
 
     if (!name || !email || !message) {
-      alert("Por favor, preencha os campos obrigatórios.");
+      alert("Por favor, preencha todos os campos obrigatórios.");
       return;
     }
 
     const whatsappText = encodeURIComponent(
-      `*MENSAGEM DE CONTATO - SITE SINTETIZZA*\n\n` +
-      `*Nome:* ${name}\n` +
-      `*E-mail:* ${email}\n` +
-      `*Telefone:* ${phone || 'Não informado'}\n\n` +
-      `*Mensagem:*\n${message}`
+      `=========================================\n` +
+      `CONTATO VIA SITE - SINTETIZZA EVENTOS\n` +
+      `=========================================\n` +
+      `• Nome: ${name}\n` +
+      `• E-mail: ${email}\n` +
+      `• Telefone: ${phone || 'Não informado'}\n\n` +
+      `Mensagem:\n${message}\n` +
+      `=========================================`
     );
 
     const waUrl = `https://wa.me/${SINTETIZZA_CONFIG.whatsappNumber}?text=${whatsappText}`;
-    window.open(waUrl, "_blank");
+    window.open(waUrl, "_blank", "noopener,noreferrer");
     showToast("Mensagem aberta no WhatsApp!", "success");
     form.reset();
   });
 }
-
