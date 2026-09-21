@@ -3,254 +3,704 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sintetizza Eventos | Infraestrutura, Som, Luz, Vídeo e Climatização</title>
-  <meta name="description" content="Locação de palcos box truss, painéis de LED, som line array, tendas, galpões, geradores e climatizadores em Sorocaba e região SP com ART/CREA.">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  
-  <!-- Fontes Google -->
+  <title>Sintetizza Eventos | Palcos, Tendas, Painéis de LED, Geradores e Estruturas em Sorocaba</title>
+  <meta name="description" content="Locação de palcos Box Truss, tendas galpão, painéis de LED, geradores, climatização e estruturas para eventos em Sorocaba e região. Plantão 24h e ART inclusa.">
+  <meta name="keywords" content="locação de palcos Sorocaba, aluguel de tendas para eventos, painel de led eventos, gerador para eventos Sorocaba, box truss Q30 Q50, sintetizza eventos, climatizador para eventos">
+  <meta name="author" content="Sintetizza Eventos">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.sintetizza.com.br/index.html">
+
+  <!-- OpenGraph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sintetizza.com.br/index.html">
+  <meta property="og:title" content="Sintetizza Eventos | Estruturas, Vídeo, Climatização e Energia">
+  <meta property="og:description" content="Locação e montagem de palcos, tendas, painéis de LED, climatização e geradores para eventos. Nota 4.9 no Google com ART inclusa.">
+  <meta property="og:image" content="https://www.sintetizza.com.br/https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/logo.png">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Sintetizza Eventos">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sintetizza Eventos | Estruturas para Eventos em Sorocaba">
+  <meta name="twitter:description" content="Palcos Box Truss, tendas, painéis de LED, climatização e geradores com suporte técnico e ART.">
+  <meta name="twitter:image" content="https://www.sintetizza.com.br/https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/logo.png">
+
+  <!-- Local SEO Meta Tags -->
+  <meta name="geo.region" content="BR-SP">
+  <meta name="geo.placename" content="Sorocaba">
+  <meta name="geo.position" content="-23.5015;-47.4526">
+  <meta name="ICBM" content="-23.5015, -47.4526">
+
+  <!-- Favicon & PWA Icons -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/logoAuzl.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/logoAuzl.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#F1CF00">
+
+  <!-- Google Fonts com swap não bloqueante -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
+
+  <!-- Schema.org JSON-LD para Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.sintetizza.com.br/#organization",
+        "name": "Sintetizza Eventos",
+        "legalName": "Sintetizza Locações e Infraestrutura para Eventos Ltda",
+        "url": "https://www.sintetizza.com.br",
+        "logo": "https://www.sintetizza.com.br/https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/logo.png",
+        "image": "https://www.sintetizza.com.br/https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/logo.png",
+        "description": "Locação e montagem de palcos Box Truss, tendas piramidais e galpões, painéis de LED, climatização e geradores para eventos.",
+        "telephone": "+5515997339422",
+        "email": "sintetizzalocacoes@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Sorocaba",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -23.5015,
+          "longitude": -47.4526
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "128",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "priceRange": "$$"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Como funciona a emissão da ART (Anotação de Responsabilidade Técnica)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Todas as nossas estruturas de palcos, coberturas, galpões e sistemas elétricos contam com acompanhamento de engenheiro civil/mecânico habilitado pelo CREA. Emitimos a ART oficial para anexação ao alvará do Corpo de Bombeiros e órgãos públicos da sua cidade."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Qual a antecedência recomendada para solicitar e reservar equipamentos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Recomendamos formalizar a reserva com antecedência de 15 a 45 dias para garantir a disponibilidade de datas. Dispomos também de frota própria para atender demandas emergenciais e plantão rápido."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "A Sintetizza atende apenas Sorocaba ou outras cidades do estado de SP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Atendemos toda a Região Metropolitana de Sorocaba, Campinas, Jundiaí, Vale do Tietê, Grande São Paulo e interior de SP com frota própria e equipe técnica."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="home-page">
 
   <!-- Header Injetado via JS -->
   <div id="site-header-container"></div>
 
-  <!-- Hero Section -->
+  <!-- =========================================================================
+       PRIMEIRA DOBRA (ABOVE THE FOLD - 100% IMPACTANTE & CLARA)
+       ========================================================================= -->
   <section class="hero-section">
+    <div class="hero-background-rotator" aria-hidden="true">
+      <span class="hero-background-slide is-active" style="background-image: url('https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/galpoes.png');"></span>
+      <span class="hero-background-slide" style="background-image: url('https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/tendas.png');"></span>
+      <span class="hero-background-slide" style="background-image: url('https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/stands-para-feiras.png');"></span>
+    </div>
     <div class="container">
       <div class="hero-grid">
         
-        <!-- Coluna de Informações -->
+        <!-- Coluna de Informações e Respostas Imediatas -->
         <div>
           <div class="hero-tag">
-            <span class="badge badge-brand">Infraestrutura Completa & Engenharia de Eventos</span>
+            <span class="badge badge-brand">Estruturas & Locação para Eventos</span>
+            <span class="badge badge-brand-soft">Sorocaba e Região SP</span>
           </div>
+
+          <!-- Quem é você + O que você faz (H1 Forte e Direto) -->
           <h1 class="hero-title">
-            Estrutura de Alta Performance para o seu <span class="highlight">Grande Evento</span>
+            Estrutura Completa de <span class="highlight">Palcos, Tendas e LED</span> para o seu Evento
           </h1>
+
           <p class="hero-desc">
-            Locação e montagem de Palcos Box Truss, Painéis de LED P3.9, Sonorização Line Array, Tendas, Galpões, Climatização e Geradores com ART/CREA e suporte operacional 24h.
+            Locação e montagem técnica de palcos Box Truss, tendas galpão, painéis de LED P3.9, climatizadores e geradores silenciados com suporte operacional e laudo ART inclusos.
           </p>
 
+          <p style="font-size: 0.98rem; color: rgba(255, 255, 255, 0.76); max-width: 620px; line-height: 1.8; margin: -6px 0 22px 0;">
+            Da locação pontual à infraestrutura completa, reunimos estruturas, mobiliário, camarins, apoio operacional, engenharia e soluções técnicas em um só lugar.
+          </p>
+
+          <!-- Badges de Confiança Imediatos (Por que escolher você?) -->
+          <div class="hero-trust-pills">
+            <span class="trust-pill">★ Nota 4.9 no Google (+128 reviews)</span>
+            <span class="trust-pill">✓ +10.000 Eventos Realizados</span>
+            <span class="trust-pill">✓ 100% com Laudo ART / CREA</span>
+            <span class="trust-pill">Plantão 24h & Montagem Pontual</span>
+          </div>
+
+          <!-- O que fazer agora? (Chamadas para Ação - CTAs Claros & Contrastantes) -->
           <div class="hero-actions">
-            <a href="orcamento.html" class="btn btn-primary btn-lg">
+            <a href="orcamento.html" class="btn btn-primary btn-lg" title="Montar Orçamento Online">
               <span>Montar Orçamento Online</span>
             </a>
-            <a href="https://wa.me/5515998353108?text=Ol%C3%A1%2C+gostaria+de+um+or%C3%A7amento+para+meu+evento" target="_blank" class="btn btn-whatsapp btn-lg">
-              <span>WhatsApp: (15) 99835-3108</span>
+            
+            <a href="https://wa.me/5515997339422?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20evento." target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg" title="Conversar no WhatsApp">
+              <span>WhatsApp: (15) 99733-9422</span>
             </a>
-            <a href="produtos.html" class="btn btn-outline-white btn-lg">
-              <span>Ver Catálogo</span>
+
+            <a href="tel:+5515997339422" class="btn btn-dark btn-lg" title="Ligar Agora">
+              <span>Ligar Agora</span>
             </a>
           </div>
 
+          <!-- Estatísticas de Autoridade -->
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number">+500</div>
-              <div class="stat-label">Eventos Realizados</div>
+              <div class="stat-number">+10.000</div>
+              <div class="stat-label">Eventos Atendidos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">4.9 ★</div>
+              <div class="stat-label">Avaliação Google</div>
             </div>
             <div class="stat-item">
               <div class="stat-number">100%</div>
-              <div class="stat-label">Com ART & CREA</div>
+              <div class="stat-label">Normas NR-10 & 35</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">NR-35</div>
-              <div class="stat-label">Equipes Certificadas</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">24h</div>
-              <div class="stat-label">Plantão Operacional</div>
+              <div class="stat-number">15 min</div>
+              <div class="stat-label">Resposta Comercial</div>
             </div>
           </div>
         </div>
 
-        <!-- Coluna Visual / Card Destaque Dinâmico -->
-        <div class="hero-visual-card" id="hero-spotlight-container">
-          <!-- Injetado dinamicamente via JS -->
+        <!-- Coluna Visual / Card de Destaque da Primeira Dobra -->
+        <div class="hero-visual-card">
+          <div style="margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <span class="badge badge-brand">Destaque Operacional</span>
+            <span style="color: var(--color-text-secondary); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">Sorocaba • Itu • Campinas • SP</span>
+          </div>
+
+          <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/tendas.png" alt="Tenda estruturada para eventos da Sintetizza" class="hero-image-cover" loading="eager" />
+
+          <h3 style="color: var(--color-text-primary); font-size: 1.2rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.03em;">Tendas e Coberturas Seguras</h3>
+          <p style="color: var(--color-text-secondary); font-size: 0.92rem; margin-bottom: 18px; line-height: 1.7;">
+            Dimensionamos cada estrutura conforme a metragem e o público do seu evento, com equipe certificada e responsável técnico.
+          </p>
+
+          <div class="flex gap-sm">
+            <a href="produtos.html" class="btn btn-outline-brand btn-block">
+              Explorar Catálogo Completo ➔
+            </a>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- Categorias de Soluções -->
+  <!-- =========================================================================
+       CATEGORIAS RÁPIDAS DE SOLUÇÕES (SEGMENTAÇÃO SEO)
+       ========================================================================= -->
   <section class="section section-light">
     <div class="container">
+      <div class="section-header" style="margin-bottom: var(--space-xl);">
+        <span class="section-subtitle">Portfólio Completo</span>
+        <h2 class="section-title">Tudo em Um Só Lugar para o Seu Evento</h2>
+        <p class="section-desc">A Sintetizza atende desde uma necessidade pontual até a operação completa de estruturas, ambientação, vídeo e suporte técnico.</p>
+      </div>
+
+      <div class="portfolio-showcase-grid">
+        <article class="portfolio-showcase-card portfolio-showcase-card-main">
+          <span class="portfolio-kicker">Cobertura Total</span>
+          <h3>Estruturas, coberturas e soluções visuais para eventos de todos os portes</h3>
+          <p>Palcos, Box Truss, pórticos, backdrops, tendas piramidais, cristal, chapéu de bruxa e projetos especiais para feiras, ativações, convenções e eventos públicos.</p>
+          <div class="portfolio-pill-row">
+            <span class="portfolio-pill">Palcos e praticáveis</span>
+            <span class="portfolio-pill">Tendas e galpões</span>
+            <span class="portfolio-pill">Pórticos e backdrops</span>
+          </div>
+        </article>
+
+        <article class="portfolio-showcase-card">
+          <span class="portfolio-kicker">Ambientação & Apoio</span>
+          <h3>Mobiliário, camarim e ambientação</h3>
+          <p>Bistrôs, mesas, cadeiras, puffs, balcões, camarins, carpetes, tecidos e plantas ornamentais para compor ambientes completos com mais conforto e presença de marca.</p>
+          <ul class="portfolio-mini-list">
+            <li>Lounge e recepção</li>
+            <li>Paisagismo e acabamentos</li>
+            <li>Backstage e apoio</li>
+          </ul>
+        </article>
+
+        <article class="portfolio-showcase-card portfolio-showcase-card-accent">
+          <span class="portfolio-kicker">Engenharia & Operação</span>
+          <h3>Operação técnica com engenharia</h3>
+          <p>Geradores, elétrica, staff, ART, suporte a AVCB e acompanhamento operacional para que o evento funcione com segurança do início da montagem até o encerramento.</p>
+          <div class="portfolio-metric">
+            <strong>100%</strong>
+            <span>foco em padrão de qualidade, documentação e execução integrada</span>
+          </div>
+        </article>
+      </div>
+
       <div class="section-header">
-        <span class="section-subtitle">Soluções Completas</span>
-        <h2 class="section-title">Infraestrutura por Segmento</h2>
-        <p class="section-desc">Equipamentos de alta tecnologia revisados e homologados para qualquer porte de evento.</p>
+        <span class="section-subtitle">Soluções por Segmento</span>
+        <h2 class="section-title">Equipamentos & Infraestrutura</h2>
+        <p class="section-desc">Selecione o segmento desejado para visualizar a disponibilidade técnica.</p>
       </div>
 
       <div class="grid grid-4">
         <a href="produtos.html?cat=estruturas" class="feature-card">
-          <div class="feature-icon-box">🏗️</div>
+          <span class="feature-index">01</span>
           <h3 class="feature-title">Palcos & Box Truss</h3>
-          <p class="feature-desc">Estruturas em alumínio modular Q30/Q50 com piso naval antiderrapante e ART.</p>
-        </a>
-
-        <a href="produtos.html?cat=audiovisual" class="feature-card">
-          <div class="feature-icon-box">📺</div>
-          <h3 class="feature-title">Painéis de LED</h3>
-          <p class="feature-desc">Telas de alta definição P3.9 para transmissão ao vivo, conferências e shows.</p>
-        </a>
-
-        <a href="produtos.html?cat=audio" class="feature-card">
-          <div class="feature-icon-box">🔊</div>
-          <h3 class="feature-title">Sonorização Line Array</h3>
-          <p class="feature-desc">Sonoplastia de alta fidelidade, mesas digitais e microfonia profissional UHF.</p>
+          <p class="feature-desc">Estruturas em alumínio modular Q30 e Q50 com ART.</p>
         </a>
 
         <a href="produtos.html?cat=coberturas" class="feature-card">
-          <div class="feature-icon-box">⛺</div>
+          <span class="feature-index">02</span>
           <h3 class="feature-title">Tendas & Galpões</h3>
-          <p class="feature-desc">Galpões de duas águas e tendas piramidais com lonas blackout antichamas.</p>
+          <p class="feature-desc">Coberturas piramidais e galpões de grande vão livre.</p>
         </a>
 
-        <a href="produtos.html?cat=iluminacao" class="feature-card">
-          <div class="feature-icon-box">💡</div>
-          <h3 class="feature-title">Iluminação Cênica</h3>
-          <p class="feature-desc">Moving heads Beam 230W, Par LED RGBW e efeitos controlados via DMX.</p>
+        <a href="produtos.html?cat=audiovisual" class="feature-card">
+          <span class="feature-index">04</span>
+          <h3 class="feature-title">Painéis de LED & Vídeo</h3>
+          <p class="feature-desc">Telas de alta definição P3.9 para shows e convenções.</p>
         </a>
 
         <a href="produtos.html?cat=climatizacao" class="feature-card">
-          <div class="feature-icon-box">❄️</div>
+          <span class="feature-index">06</span>
           <h3 class="feature-title">Climatização</h3>
-          <p class="feature-desc">Climatizadores evaporativos ecológicos com redução térmica de até 12°C.</p>
+          <p class="feature-desc">Climatizadores evaporativos ecológicos de alta vazão.</p>
         </a>
 
         <a href="produtos.html?cat=energia" class="feature-card">
-          <div class="feature-icon-box">⚡</div>
-          <h3 class="feature-title">Geradores Silenciados</h3>
-          <p class="feature-desc">Grupos geradores cabinados de 55kVA a 350kVA com operador de plantão.</p>
+          <span class="feature-index">07</span>
+          <h3 class="feature-title">Geradores de Energia</h3>
+          <p class="feature-desc">Grupos geradores silenciados de 55kVA a 350kVA com operador.</p>
         </a>
 
-        <a href="produtos.html?cat=stands" class="feature-card">
-          <div class="feature-icon-box">🏢</div>
-          <h3 class="feature-title">Stands para Feiras</h3>
-          <p class="feature-desc">Estandes modulares em Octanorm, piso elevado com carpete e testeiras.</p>
+        <a href="produtos.html?cat=operacao" class="feature-card">
+          <span class="feature-index">08</span>
+          <h3 class="feature-title">Laudos Técnicos & ART</h3>
+          <p class="feature-desc">Acompanhamento técnico, bombeiros e equipe NR-10/NR-35.</p>
         </a>
+      </div>
+
+      <div class="services-spotlight">
+        <div class="services-visual-panel">
+          <div class="services-visual-copy">
+            <span class="section-subtitle">Serviços em Campo</span>
+            <h3>Montagens reais, operação coordenada e acabamento profissional</h3>
+            <p>Selecionamos alguns registros operacionais para mostrar como as soluções da Sintetizza acontecem na prática, do carregamento à entrega final.</p>
+          </div>
+
+          <div class="services-visual-grid">
+            <figure class="services-visual-card services-visual-card-lg">
+              <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/galpoes.png" alt="Galpão estruturado para eventos e operações" loading="lazy" />
+              <figcaption>Galpões e coberturas estruturadas</figcaption>
+            </figure>
+            <figure class="services-visual-card">
+              <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/tendas.png" alt="Tenda estruturada para evento ao ar livre" loading="lazy" />
+              <figcaption>Tendas para eventos ao ar livre</figcaption>
+            </figure>
+            <figure class="services-visual-card">
+              <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/arquibancadas.png" alt="Arquibancada montada para receber público" loading="lazy" />
+              <figcaption>Arquibancadas e áreas de público</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="services-clients-panel">
+        <span class="section-subtitle">Clientes Atendidos</span>
+
+        <div class="client-logo-marquee">
+          <div class="client-logo-track">
+            <div class="client-logo-set">
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.27.jpeg" alt="Cliente atendido pela Sintetizza" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(1).jpeg" alt="Logo de cliente da Sintetizza" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(10).jpeg" alt="Logo de cliente atendido em eventos" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(12).jpeg" alt="Marca cliente da Sintetizza" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(14).jpeg" alt="Cliente corporativo atendido pela Sintetizza" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(17).jpeg" alt="Cliente de infraestrutura para eventos" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(20).jpeg" alt="Logo de cliente parceiro da Sintetizza" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(23).jpeg" alt="Cliente parceiro em eventos e ativações" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(24).jpeg" alt="Cliente institucional da Sintetizza" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(25).jpeg" alt="Marca ja atendida em eventos" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(27).jpeg" alt="Cliente com eventos realizados pela Sintetizza" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(29).jpeg" alt="Parceiro de eventos atendido pela Sintetizza" loading="lazy" />
+            </div>
+            <div class="client-logo-set" aria-hidden="true">
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.27.jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(1).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(10).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(12).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(14).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(17).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(20).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(23).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(24).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(25).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(27).jpeg" alt="" loading="lazy" />
+                <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Clientes/WhatsApp Image 2026-08-31 at 12.20.56(29).jpeg" alt="" loading="lazy" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Produtos em Destaque -->
+  <!-- =========================================================================
+       EQUIPAMENTOS EM DESTAQUE (PRODUTOS MAIS PEDIDOS)
+       ========================================================================= -->
   <section class="section section-white">
     <div class="container">
       <div class="flex items-center justify-between" style="margin-bottom: var(--space-2xl); flex-wrap: wrap; gap: var(--space-md);">
         <div>
-          <span class="section-subtitle">Catálogo em Destaque</span>
-          <h2 class="section-title">Equipamentos Mais Solicitados</h2>
-          <p class="section-desc">Selecione os equipamentos necessários e adicione diretamente ao orçamento.</p>
+          <span class="section-subtitle">Soluções em Destaque</span>
+          <h2 class="section-title">Os Grupos Mais Estratégicos da Sintetizza</h2>
+          <p class="section-desc" style="margin: 0;">Comece pelas frentes que mais concentram contratação completa e, depois, avance para os equipamentos mais pedidos.</p>
         </div>
-        <a href="produtos.html" class="btn btn-outline">
+        <a href="produtos.html" class="btn btn-outline" title="Ver Catálogo">
           Ver Catálogo Completo ➔
         </a>
       </div>
 
+      <div class="strategic-groups-grid" id="home-strategic-groups-grid"></div>
+
+      <div class="section-header" style="margin-top: var(--space-2xl);">
+        <span class="section-subtitle">Equipamentos em Evidência</span>
+        <h3 class="section-title" style="font-size: clamp(1.5rem, 2.4vw, 2rem);">Itens que Costumam Fechar Junto</h3>
+        <p class="section-desc">Seleção rápida de equipamentos bastante solicitados para orçamentos iniciais.</p>
+      </div>
       <div class="grid grid-3" id="home-featured-products-grid"></div>
     </div>
   </section>
 
-  <!-- Garantias Técnicas & Engenharia -->
-  <section class="section section-dark">
+  <section class="section section-light">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">Segurança & Conformidade</span>
-        <h2 class="section-title">Garantias e Padrões Técnicos</h2>
-        <p class="section-desc">Tranquilidade jurídica e conformidade para produtoras, empresas e órgãos públicos.</p>
+        <span class="section-subtitle">Galeria de Montagens</span>
+        <h2 class="section-title">Registros Reais dos Eventos e Estruturas Entregues</h2>
+        <p class="section-desc">Uma seleção visual da operação da Sintetizza em ativações, feiras, shows, coberturas e eventos corporativos.</p>
       </div>
 
-      <div class="grid grid-4">
-        <div class="differentiator-card" style="background: var(--color-slate-900); border-color: var(--color-border-dark);">
-          <div class="differentiator-icon">📋</div>
-          <h3 style="color: var(--color-white);">ART / CREA Oficial</h3>
-          <p style="color: var(--color-slate-400);">Emissão de Anotação de Responsabilidade Técnica assinada por engenheiro responsável.</p>
+      <div class="gallery-viewer" id="gallery-viewer">
+        <div class="gallery-stage-wrap">
+          <button type="button" class="gallery-stage gallery-open" aria-label="Ampliar imagem: Estrutura de evento montada pela Sintetizza">
+            <img id="gallery-stage-image" src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.41.58(10).jpeg" alt="Estrutura de evento montada pela Sintetizza" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-control gallery-control-prev" data-gallery-direction="-1" aria-label="Imagem anterior">‹</button>
+          <button type="button" class="gallery-control gallery-control-next" data-gallery-direction="1" aria-label="Próxima imagem">›</button>
         </div>
 
-        <div class="differentiator-card" style="background: var(--color-slate-900); border-color: var(--color-border-dark);">
-          <div class="differentiator-icon">🛡️</div>
-          <h3 style="color: var(--color-white);">Normas NR-10 & NR-35</h3>
-          <p style="color: var(--color-slate-400);">Montadores e eletricistas certificados com EPIs e treinamentos de altura e elétrica.</p>
-        </div>
-
-        <div class="differentiator-card" style="background: var(--color-slate-900); border-color: var(--color-border-dark);">
-          <div class="differentiator-icon">🚚</div>
-          <h3 style="color: var(--color-white);">Logística & Frota Própria</h3>
-          <p style="color: var(--color-slate-400);">Pontualidade rigorosa na entrega, montagem antecipada e passagem de som.</p>
-        </div>
-
-        <div class="differentiator-card" style="background: var(--color-slate-900); border-color: var(--color-border-dark);">
-          <div class="differentiator-icon">🔄</div>
-          <h3 style="color: var(--color-white);">Equipamentos com Backup</h3>
-          <p style="color: var(--color-slate-400);">Redundância de cabos, processadoras e lâmpadas para operação sem interrupções.</p>
+        <div class="gallery-tabs" role="tablist" aria-label="Selecionar imagem da galeria">
+          <button type="button" class="gallery-tab is-active" role="tab" aria-selected="true" data-gallery-index="0" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.41.58(10).jpeg" data-alt="Estrutura de evento montada pela Sintetizza">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.41.58(10).jpeg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-tab" role="tab" aria-selected="false" data-gallery-index="1" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.43.50.jpeg" data-alt="Cobertura e ambientacao para evento">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.43.50.jpeg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-tab" role="tab" aria-selected="false" data-gallery-index="2" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.44.49.jpeg" data-alt="Infraestrutura completa de evento com palco e apoio">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.44.49.jpeg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-tab" role="tab" aria-selected="false" data-gallery-index="3" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.41.58(6).jpeg" data-alt="Montagem de palco e solucao tecnica Sintetizza">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.41.58(6).jpeg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-tab" role="tab" aria-selected="false" data-gallery-index="4" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.42.54.jpeg" data-alt="Detalhe de estrutura de evento entregue pela Sintetizza">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.42.54.jpeg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-tab" role="tab" aria-selected="false" data-gallery-index="5" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.41.58(16).jpeg" data-alt="Montagem vertical de estrutura em evento">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.41.58(16).jpeg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-tab" role="tab" aria-selected="false" data-gallery-index="6" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.43.31.jpeg" data-alt="Evento com soluções de estrutura e apoio técnico">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.43.31.jpeg" alt="" loading="lazy" />
+          </button>
+          <button type="button" class="gallery-tab" role="tab" aria-selected="false" data-gallery-index="7" data-src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.46.54.jpeg" data-alt="Estrutura operacional pronta para evento">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.46.54.jpeg" alt="" loading="lazy" />
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Como Funciona o Orçamento -->
+  <!-- =========================================================================
+       COMPARATIVO DE SEGURANÇA (POR QUE ESCOLHER A SINTETIZZA)
+       ========================================================================= -->
   <section class="section section-light">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">Fluxo Ágil</span>
-        <h2 class="section-title">Como Funciona o Processo de Locação</h2>
-        <p class="section-desc">Processo transparente desde a escolha dos equipamentos até a montagem no local.</p>
+        <span class="section-subtitle">Segurança & Confiabilidade</span>
+        <h2 class="section-title">Por Que a Sintetizza é a Escolha Segura?</h2>
+        <p class="section-desc">Evite surpresas e atrasos no dia mais importante da sua produção.</p>
+      </div>
+
+      <div class="comparison-grid comparison-grid-single">
+        <!-- Padrão Sintetizza -->
+        <div class="comparison-card card-advantage">
+          <div style="margin-top: 10px;">
+            <h3 style="font-size: 1.25rem; margin-bottom: 6px; color: var(--color-text-primary);">Padrão de Qualidade Sintetizza</h3>
+            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Tranquilidade, acabamento profissional e conformidade total para produtores, marcas e realizadores.</p>
+          </div>
+
+          <div class="comparison-list">
+            <div class="comparison-item advantage">
+              <span class="icon">✓</span>
+              <span><strong>ART emitida por engenheiro</strong> habilitado para bombeiros e prefeitura.</span>
+            </div>
+            <div class="comparison-item advantage">
+              <span class="icon">✓</span>
+              <span><strong>Montagem com antecedência</strong> garantindo tempo para conferências e testes operacionais.</span>
+            </div>
+            <div class="comparison-item advantage">
+              <span class="icon">✓</span>
+              <span><strong>Equipe treinada e equipada</strong> para procedimentos ligados às NR-1, NR-6, NR-10 e NR-35.</span>
+            </div>
+            <div class="comparison-item advantage">
+              <span class="icon">✓</span>
+              <span><strong>Geradores e equipamentos revisados</strong> com manutenção preventiva rigorosa.</span>
+            </div>
+            <div class="comparison-item advantage">
+              <span class="icon">✓</span>
+              <span><strong>Plantão operacional 24h</strong> com técnicos in loco durante todo o evento.</span>
+            </div>
+            <div class="comparison-item advantage">
+              <span class="icon">✓</span>
+              <span><strong>Catálogo completo de equipamentos</strong> com estruturas, mobiliário, camarim, controle de filas, decoração e apoio operacional.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SEGMENTOS ATENDIDOS (SEO SEMÂNTICO)
+       ========================================================================= -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Segmentos</span>
+        <h2 class="section-title">Soluções Especializadas para Cada Tipo de Evento</h2>
+        <p class="section-desc">Atendimento sob medida para eventos corporativos, públicos, esportivos, culturais, sociais e promocionais.</p>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="segment-grid-card">
+          <div class="segment-card-image-wrap">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/eventos-corporativos.png" alt="Eventos Corporativos" loading="lazy" />
+          </div>
+          <div class="segment-card-body">
+            <h3 class="segment-card-title">Corporativo & Convenções</h3>
+            <p class="segment-card-desc">Auditórios, painéis de LED, climatização e infraestrutura técnica.</p>
+          </div>
+        </div>
+
+        <div class="segment-grid-card">
+          <div class="segment-card-image-wrap">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/eventos-de-agronegocio.png" alt="Eventos de Agronegócio" loading="lazy" />
+          </div>
+          <div class="segment-card-body">
+            <h3 class="segment-card-title">Agronegócio & Feiras</h3>
+            <p class="segment-card-desc">Galpões de grande vão livre, geradores, estandes e palcos rurais.</p>
+          </div>
+        </div>
+
+        <div class="segment-grid-card">
+          <div class="segment-card-image-wrap">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/eventos-esportivos.png" alt="Eventos Esportivos" loading="lazy" />
+          </div>
+          <div class="segment-card-body">
+            <h3 class="segment-card-title">Eventos Esportivos</h3>
+            <p class="segment-card-desc">Pórticos de largada, arquibancadas, gradil de metal e ambulância UTI.</p>
+          </div>
+        </div>
+
+        <div class="segment-grid-card">
+          <div class="segment-card-image-wrap">
+            <img src="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/eventos-religiosos.png" alt="Congressos e Eventos Religiosos" loading="lazy" />
+          </div>
+          <div class="segment-card-body">
+            <h3 class="segment-card-title">Congressos & Religiosos</h3>
+            <p class="segment-card-desc">Mega coberturas em tendas, telões de LED e infraestrutura para grandes públicos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-tags-grid" style="margin-top: var(--space-xl);">
+        <span class="city-tag-chip">Eventos corporativos</span>
+        <span class="city-tag-chip">Feiras e exposições</span>
+        <span class="city-tag-chip">Shows e festivais</span>
+        <span class="city-tag-chip">Eventos públicos</span>
+        <span class="city-tag-chip">Corridas e esportivos</span>
+        <span class="city-tag-chip">Congressos e convenções</span>
+        <span class="city-tag-chip">Casamentos e celebrações</span>
+        <span class="city-tag-chip">Eventos institucionais</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PASSO A PASSO (COMO FUNCIONA O ATENDIMENTO)
+       ========================================================================= -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Passo a Passo</span>
+        <h2 class="section-title">Como Funciona a Contratação</h2>
+        <p class="section-desc">Processo ágil e transparente para garantir a estrutura do seu evento.</p>
       </div>
 
       <div class="process-grid">
         <div class="process-step-card">
           <div class="step-badge">1</div>
-          <h3 class="step-title">Selecione os Itens</h3>
-          <p class="step-desc">Adicione palcos, painéis de LED, áudio ou coberturas diretamente na lista.</p>
+          <h3 class="step-title">Escolha os Itens</h3>
+          <p class="step-desc">Selecione os equipamentos no site ou envie sua planta/rider técnico.</p>
         </div>
 
         <div class="process-step-card">
           <div class="step-badge">2</div>
-          <h3 class="step-title">Dados do Evento</h3>
-          <p class="step-desc">Informe a cidade, data, local e público previsto para dimensionamento.</p>
+          <h3 class="step-title">Dimensionamento Técnico</h3>
+          <p class="step-desc">Nossa equipe calcula a estrutura ideal e envia a proposta em até 15 minutos.</p>
         </div>
 
         <div class="process-step-card">
           <div class="step-badge">3</div>
-          <h3 class="step-title">Envio Direto</h3>
-          <p class="step-desc">Envie sua lista no WhatsApp com 1 clique ou solicite proposta formal por e-mail.</p>
+          <h3 class="step-title">Montagem com ART</h3>
+          <p class="step-desc">Entrega antecipada com frota própria e laudo emitido por engenheiro.</p>
         </div>
 
         <div class="process-step-card">
           <div class="step-badge">4</div>
-          <h3 class="step-title">Proposta & Montagem</h3>
-          <p class="step-desc">Receba o orçamento detalhado e conte com a equipe técnica no cronograma.</p>
+          <h3 class="step-title">Plantão & Suporte 24h</h3>
+          <p class="step-desc">Operadores e técnicos acompanham seu evento até a desmontagem final.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Banner CTA Final -->
+  <!-- =========================================================================
+       PROVAS SOCIAIS & AVALIAÇÕES GOOGLE (GOOGLE REVIEWS 4.9)
+       ========================================================================= -->
   <section class="section section-white">
     <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Provas Sociais</span>
+        <h2 class="section-title">Avaliações de Quem Já Realizou Eventos Conosco</h2>
+        <p class="section-desc">Média de satisfação 4.9 no Google com mais de 128 avaliações de produtores e realizadores.</p>
+      </div>
+
+      <div class="reviews-grid" id="home-google-reviews-grid"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       CIDADES & REGIÕES ATENDIDAS (LOCAL SEO)
+       ========================================================================= -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Região de Atendimento</span>
+        <h2 class="section-title">Estruturas para Eventos em Todo o Interior e Capital de SP</h2>
+        <p class="section-desc">Dispomos de frota própria e base operacional para atendimento ágil nas seguintes cidades:</p>
+      </div>
+
+      <div class="city-tags-grid">
+        <span class="city-tag-chip">Sorocaba (Sede)</span>
+        <span class="city-tag-chip">Votorantim</span>
+        <span class="city-tag-chip">Itu</span>
+        <span class="city-tag-chip">Salto</span>
+        <span class="city-tag-chip">Indaiatuba</span>
+        <span class="city-tag-chip">Campinas</span>
+        <span class="city-tag-chip">Porto Feliz</span>
+        <span class="city-tag-chip">Tatuí</span>
+        <span class="city-tag-chip">Boituva</span>
+        <span class="city-tag-chip">São Roque</span>
+        <span class="city-tag-chip">Jundiaí</span>
+        <span class="city-tag-chip">São Paulo Capital</span>
+        <span class="city-tag-chip">Piracicaba</span>
+        <span class="city-tag-chip">Araçoiaba da Serra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PERGUNTAS FREQUENTES (FAQ COM ACCORDION & SCHEMA SEO)
+       ========================================================================= -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Dúvidas Frequentes</span>
+        <h2 class="section-title">Perguntas Frequentes sobre Locação</h2>
+        <p class="section-desc">Tire suas principais dúvidas sobre laudos técnicos, montagem, prazos e geradores.</p>
+      </div>
+
+      <div id="home-faq-accordion"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       BANNER CTA FINAL DE ALTA CONVERSÃO
+       ========================================================================= -->
+  <section class="section section-light">
+    <div class="container">
       <div class="cta-banner">
-        <span class="badge badge-brand" style="margin-bottom: 14px;">Atendimento Imediato</span>
-        <h2 style="font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 12px;">
-          Planejando o seu Próximo Evento?
+        <span class="badge badge-brand" style="margin-bottom: 12px;">Atendimento Imediato</span>
+        <h2 style="font-size: clamp(1.7rem, 2.8vw, 2.4rem); margin-bottom: 12px;">
+          Pronto para Estruturar o seu Evento com Segurança?
         </h2>
-        <p style="font-size: 1.05rem; max-width: 620px; margin: 0 auto 24px auto; color: var(--color-slate-300);">
-          Consulte nossa equipe técnica para dimensionamento de palcos, tendas, som, iluminação e painéis de LED em Sorocaba e região.
+        <p style="font-size: 1.05rem; max-width: 620px; margin: 0 auto 24px auto;">
+          Monte sua lista de equipamentos pelo site ou fale agora mesmo com um de nossos consultores técnicos via WhatsApp.
         </p>
         <div class="flex items-center justify-center gap-md" style="flex-wrap: wrap;">
           <a href="orcamento.html" class="btn btn-primary btn-lg">
-            <span>Montar Lista de Orçamento</span>
+            <span>Montar Orçamento Online</span>
           </a>
-          <a href="https://wa.me/5515998353108?text=Ol%C3%A1%2C+gostaria+de+solicitar+um+or%C3%A7amento" target="_blank" class="btn btn-whatsapp btn-lg">
-            <span>Chamar no WhatsApp (15) 99835-3108</span>
+          <a href="https://wa.me/5515997339422?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20meu%20evento." target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+            <span>WhatsApp: (15) 99733-9422</span>
+          </a>
+          <a href="tel:+5515997339422" class="btn btn-dark btn-lg">
+            <span>(15) 99733-9422</span>
           </a>
         </div>
       </div>
@@ -260,11 +710,21 @@
   <!-- Footer Injetado via JS -->
   <div id="site-footer-container"></div>
 
-  <!-- Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/components.js"></script>
-  <script src="js/main.js"></script>
+  <div class="gallery-lightbox" id="gallery-lightbox" aria-hidden="true">
+    <div class="gallery-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="gallery-lightbox-caption">
+      <button type="button" class="gallery-lightbox-close" aria-label="Fechar imagem ampliada">&times;</button>
+      <button type="button" class="gallery-lightbox-nav gallery-lightbox-prev" data-lightbox-direction="-1" aria-label="Imagem anterior">‹</button>
+      <img id="gallery-lightbox-image" src="" alt="" />
+      <button type="button" class="gallery-lightbox-nav gallery-lightbox-next" data-lightbox-direction="1" aria-label="Próxima imagem">›</button>
+      <p id="gallery-lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Scripts não bloqueantes (defer para pontuação máxima no PageSpeed) -->
+  <script src="js/data.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/gallery.js" defer></script>
 </body>
 </html>
-
