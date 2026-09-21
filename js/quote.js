@@ -45,16 +45,20 @@ function renderQuoteItemsList() {
   if (itemsSection) itemsSection.style.display = "block";
 
   container.innerHTML = items.map(item => {
-    const thumbImg = item.image || item.fallbackImage || "assets/images/original/principal-novo-2.png";
+    const thumbImg = item.image || item.fallbackImage || "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/original/principal-novo-2.png";
+    const safeName = escapeHTML(item.name);
+    const safeCategory = escapeHTML(item.categoryLabel || "Item");
+    const safeNotes = item.notes ? escapeHTML(item.notes) : "";
+    const safeThumb = escapeHTML(thumbImg);
     return `
       <div class="quote-item-row" data-id="${item.id}">
         <div class="quote-item-info">
           <div class="quote-item-thumb">
-            <img src="${thumbImg}" alt="${item.name}" onerror="this.src='assets/images/original/principal-novo-2.png'">
+            <img src="${safeThumb}" alt="${safeName}" onerror="this.src='https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/original/principal-novo-2.png'">
           </div>
           <div>
-            <div class="quote-item-title">${item.name}</div>
-            <div class="quote-item-cat">${item.categoryLabel || 'Item'} ${item.notes ? `• <em>${item.notes}</em>` : ''}</div>
+            <div class="quote-item-title">${safeName}</div>
+            <div class="quote-item-cat">${safeCategory} ${safeNotes ? `• <em>${safeNotes}</em>` : ''}</div>
           </div>
         </div>
 
@@ -162,6 +166,9 @@ function buildQuoteSummaryText(data) {
 }
 
 function showQuoteSuccessModal(data, mailtoUrl, whatsappUrl) {
+  const safeClientName = escapeHTML(data.clientName);
+  const safeItemCount = Number.isFinite(Number(data.items?.length)) ? Number(data.items.length) : 0;
+
   let modal = document.getElementById("quote-success-modal");
   if (!modal) {
     modal = document.createElement("div");
@@ -180,11 +187,11 @@ function showQuoteSuccessModal(data, mailtoUrl, whatsappUrl) {
       </div>
       <div class="modal-body">
         <p style="color: var(--color-slate-600); margin-bottom: 20px; font-size: 1rem; line-height: 1.6;">
-          Olá <strong>${data.clientName}</strong>! Sua lista técnica com <strong>${data.items.length} item(s)</strong> está pronta. Escolha seu canal preferido para envio imediato:
+          Olá <strong>${safeClientName}</strong>! Sua lista técnica com <strong>${safeItemCount} item(s)</strong> está pronta. Escolha seu canal preferido para envio imediato:
         </p>
 
         <div class="flex flex-col gap-md" style="margin-bottom: 20px;">
-          <a href="${whatsappUrl}" target="_blank" class="btn btn-whatsapp btn-block btn-lg" onclick="handleFinishQuote()">
+          <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-block btn-lg" onclick="handleFinishQuote()">
             <span>Enviar no WhatsApp (Atendimento Mais Rápido)</span>
           </a>
 
@@ -203,8 +210,92 @@ function showQuoteSuccessModal(data, mailtoUrl, whatsappUrl) {
   modal.classList.add("is-active");
 }
 
+function showCustomItemModal() {
+  let modal = document.getElementById("custom-item-modal");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "custom-item-modal";
+    modal.className = "modal-backdrop";
+    document.body.appendChild(modal);
+  }
+
+  modal.innerHTML = `
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="badge badge-brand-soft" style="margin-bottom: 8px;">Item Personalizado</span>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--color-slate-950);">
+            Adicionar item fora do catálogo
+          </h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeCustomItemModal()" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="custom-item-form" class="quote-form" style="gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="customItemName">Nome do item <span class="required">*</span></label>
+            <input type="text" id="customItemName" name="customItemName" class="form-control" placeholder="Ex: praticável 2x1, tenda 6x6, fechamento especial" required>
+            <span class="form-helper">Descreva o equipamento, medida ou estrutura desejada.</span>
+          </div>
+
+          <div class="field-grid" style="grid-template-columns: 140px 1fr;">
+            <div class="form-group">
+              <label class="form-label" for="customItemQty">Quantidade</label>
+              <input type="number" id="customItemQty" name="customItemQty" class="form-control" min="1" value="1" inputmode="numeric">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="customItemNotes">Observações</label>
+              <input type="text" id="customItemNotes" name="customItemNotes" class="form-control" placeholder="Metragem, acabamento, cor, prazo ou detalhe técnico">
+            </div>
+          </div>
+
+          <div class="quote-inline-actions">
+            <button type="submit" class="btn btn-primary btn-block">
+              Salvar item personalizado
+            </button>
+            <button type="button" class="btn btn-outline btn-block" onclick="closeCustomItemModal()">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+
+  modal.classList.add("is-active");
+
+  const form = document.getElementById("custom-item-form");
+  const nameInput = document.getElementById("customItemName");
+  if (nameInput) nameInput.focus();
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const itemName = form.customItemName.value.trim();
+      const itemNotes = form.customItemNotes.value.trim();
+      const quantity = Math.max(1, Number(form.customItemQty.value) || 1);
+
+      if (!itemName) {
+        showToast("Informe o nome do item personalizado.", "error");
+        return;
+      }
+
+      QuoteCart.addCustomItem(itemName, itemNotes, quantity);
+      closeCustomItemModal();
+      showToast(`"${itemName}" adicionado à sua lista!`, "success");
+    });
+  }
+}
+
 window.closeQuoteModal = function() {
   const modal = document.getElementById("quote-success-modal");
+  if (modal) modal.classList.remove("is-active");
+};
+
+window.closeCustomItemModal = function() {
+  const modal = document.getElementById("custom-item-modal");
   if (modal) modal.classList.remove("is-active");
 };
 
@@ -220,12 +311,7 @@ function setupCustomItemModal() {
   if (!customBtn) return;
 
   customBtn.addEventListener("click", () => {
-    const itemName = prompt("Qual equipamento, medida ou estrutura especial você precisa?");
-    if (itemName && itemName.trim()) {
-      const itemNotes = prompt("Alguma observação técnica ou metragem? (Opcional):", "");
-      QuoteCart.addCustomItem(itemName, itemNotes || "");
-      showToast(`"${itemName.trim()}" adicionado à sua lista!`, "success");
-    }
+    showCustomItemModal();
   });
 }
 
