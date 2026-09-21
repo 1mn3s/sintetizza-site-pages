@@ -1,34 +1,530 @@
 /**
  * =============================================================================
- * SINTETIZZA - BASE DE DADOS OFICIAL & CATÁLOGO DE SOLUÇÕES TÉCNICAS
+ * SINTETIZZA - BASE DE DADOS OFICIAL, PROVAS SOCIAIS & CONFIGURAÇÃO SEO
  * =============================================================================
  */
 
 const SINTETIZZA_CONFIG = {
   companyName: "Sintetizza Eventos",
   companyShortName: "Sintetizza",
-  tagline: "Infraestrutura Completa, Sonorização, Iluminação, Painéis de LED e Climatização",
+  legalName: "Sintetizza Locações e Infraestrutura para Eventos Ltda",
+  cnpj: "33.273.080/0001-08",
+  tagline: "Locação de Palcos, Tendas, Painéis de LED, Climatização e Infraestrutura para Eventos",
   email: "sintetizzalocacoes@gmail.com",
   emailQuotes: "sintetizzalocacoes@gmail.com",
-  phone: "(15) 99835-3108",
-  whatsappNumber: "5515998353108",
-  whatsappDisplay: "(15) 99835-3108",
-  address: "Sorocaba e Região - SP",
-  serviceHours: "Segunda a Sexta: 08h às 18h | Plantão Operacional 24h em Eventos",
-  instagramUrl: "https://www.instagram.com/sintetizza_locacoes/"
+  phone: "(15) 99733-9422",
+  phoneRaw: "+5515997339422",
+  whatsappNumber: "5515997339422",
+  whatsappDisplay: "(15) 99733-9422",
+  whatsappDefaultMsg: "Olá! Gostaria de solicitar um orçamento para o meu evento com a Sintetizza.",
+  address: "Sorocaba e Região Metropolitana - SP",
+  serviceHours: "Seg a Sex: 08h às 18h | Sáb: 08h às 12h | Plantão Operacional 24h",
+  googleRating: 4.9,
+  googleReviewsCount: 128,
+  eventsCompleted: "+10.000",
+  experienceYears: "15 anos",
+  responseTime: "Até 15 minutos",
+  instagram: "@sintetizza_locacoes",
+  instagramUrl: "https://www.instagram.com/sintetizza_locacoes/",
+  siteUrl: "https://www.sintetizza.com.br"
 };
 
+const CITIES_SERVED = [
+  "Sorocaba", "Votorantim", "Itu", "Salto", "Indaiatuba", "Campinas",
+  "Porto Feliz", "Tatuí", "Boituva", "São Roque", "Jundiaí", "São Paulo Capital",
+  "Piracicaba", "Araçoiaba da Serra", "Mairinque", "Ibiúna"
+];
+
+const EXTRA_CATEGORIES = [
+  { id: "aquecimento", name: "Aquecedores & Lareiras" },
+  { id: "mobiliario", name: "Bistrôs, Mesas & Lounge" },
+  { id: "camarim", name: "Camarim & Backstage" },
+  { id: "limpeza", name: "Lixeiras & Coleta" },
+  { id: "decoracao", name: "Tecidos, Pisos & Plantas" },
+  { id: "recepcao", name: "Balcões, Totens & Filas" },
+  { id: "apoio", name: "Apoio Operacional" },
+  { id: "servicos", name: "Serviços Técnicos" }
+];
+
+const HOME_STRATEGIC_GROUPS = [
+  {
+    id: "estruturas-coberturas",
+    title: "Estruturas, Palcos e Coberturas",
+    description: "Palcos, Box Truss, pórticos, backdrops, praticáveis, tendas piramidais, cristal, chapéu de bruxa e galpões para projetos completos.",
+    href: "produtos.html?cat=estruturas",
+    accent: "Estruturas",
+    bullets: ["Palcos e praticáveis", "Pórticos e comunicação visual", "Tendas e galpões"],
+    icon: "🏗️"
+  },
+  {
+    id: "audiovisual-climatizacao",
+    title: "Vídeo, Climatização e Energia",
+    description: "Painéis de LED, projetores, climatizadores, aquecedores, geradores e elétrica para eventos de todos os portes.",
+    href: "produtos.html?cat=audiovisual",
+    accent: "Operação",
+    bullets: ["Painéis de LED e vídeo", "Climatização e aquecimento", "Geradores e elétrica"],
+    icon: "⚙️"
+  },
+  {
+    id: "mobiliario-apoio",
+    title: "Mobiliário, Camarim e Apoio Operacional",
+    description: "Bistrôs, mesas, cadeiras, puffs, balcões, camarins, paisagismo, unifilas, catracas e itens de apoio para experiências completas.",
+    href: "produtos.html?cat=mobiliario",
+    accent: "Ambientação",
+    bullets: ["Lounge e recepção", "Backstage e camarim", "Fluxo e apoio"],
+    icon: "🛋️"
+  }
+];
+
+const EXTRA_PRODUCTS = [
+  {
+    id: "aquecedores-e-lareiras-eventos",
+    name: "Aquecedores, Lareiras e Pirâmides a Gás",
+    category: "aquecimento",
+    categoryLabel: "Aquecedores & Lareiras",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.45.38(2).jpeg",
+    shortDesc: "Soluções para aquecimento confortável em eventos ao ar livre e ambientes amplos.",
+    fullDesc: "Locação de aquecedor tipo chapéu, aquecedor pirâmide e lareira externa com acendimento elétrico e sensores de segurança para recepções, casamentos e áreas VIP.",
+    specs: [
+      { label: "Potência", value: "Até 6750 W" },
+      { label: "Combustível", value: "Gás com ignição elétrica" },
+      { label: "Segurança", value: "Sensor anti-inclinação e contra ausência de chama" }
+    ],
+    features: [
+      "Ideal para noites frias e eventos externos",
+      "Equipamentos revisados e prontos para operação",
+      "Entrega e orientação técnica no local"
+    ],
+    isFeatured: false,
+    badge: "Conforto"
+  },
+  {
+    id: "bistros-poltronas-lounge",
+    name: "Bistrôs, Poltronas, Sofás e Banquetas",
+    category: "mobiliario",
+    categoryLabel: "Bistrôs, Mesas & Lounge",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/moveis-e-utensilios.png",
+    shortDesc: "Linha lounge para recepção, área VIP, feiras e eventos corporativos.",
+    fullDesc: "Catálogo com bistrô dobrável, bistrô artesanal, bistrô industrial, poltronas, sofá, banquetas e composições para ambientação de eventos com alto padrão visual.",
+    specs: [
+      { label: "Modelos", value: "Bistrôs, poltronas, sofás e banquetas" },
+      { label: "Materiais", value: "Madeira, ferro, tecido e acabamento premium" }
+    ],
+    features: [
+      "Combinações para lounge, recepção e camarote",
+      "Acabamentos alinhados ao perfil do evento",
+      "Montagem organizada e pronta para uso"
+    ],
+    isFeatured: true,
+    badge: "Lounge"
+  },
+  {
+    id: "mesas-cadeiras-puffs-eventos",
+    name: "Mesas, Cadeiras Tiffany e Puffs",
+    category: "mobiliario",
+    categoryLabel: "Bistrôs, Mesas & Lounge",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/moveis-e-utensilios.png",
+    shortDesc: "Opções para jantar, credenciamento, área kids e composições sociais.",
+    fullDesc: "Mesas em madeira, PVC, pé palito, redondas e infantis, além de cadeiras Tiffany e puffs decorativos para diversas configurações de eventos.",
+    specs: [
+      { label: "Linhas", value: "Social, corporativa e infantil" },
+      { label: "Capacidade", value: "Modelos para 2 a 8 lugares" }
+    ],
+    features: [
+      "Versões para buffet, feira e recepção",
+      "Peças fáceis de combinar com o projeto visual",
+      "Excelente opção para apoio e ambientação"
+    ],
+    isFeatured: false,
+    badge: "Mobiliário"
+  },
+  {
+    id: "balcoes-credenciamento-personalizados",
+    name: "Balcões de Atendimento e Credenciamento",
+    category: "recepcao",
+    categoryLabel: "Balcões, Totens & Filas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/bancadas.png",
+    shortDesc: "Balcões em madeira ou MDF para recepção, bar e ativações.",
+    fullDesc: "Balcões de apoio e atendimento com opções personalizáveis para credenciamento, recepção de convidados, operação de bar e áreas promocionais.",
+    specs: [
+      { label: "Materiais", value: "Madeira e MDF" },
+      { label: "Formato", value: "Retangular e sob medida" }
+    ],
+    features: [
+      "Ideal para check-in e atendimento ao público",
+      "Pode compor projetos personalizados",
+      "Entrega pronta para uso no local"
+    ],
+    isFeatured: false,
+    badge: "Recepção"
+  },
+  {
+    id: "camarim-backstage-completo",
+    name: "Camarim Completo com Arara, Espelho e Frigobar",
+    category: "camarim",
+    categoryLabel: "Camarim & Backstage",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/container.png",
+    shortDesc: "Estrutura de apoio para artistas, palestrantes e equipes de produção.",
+    fullDesc: "Itens para montagem de camarim e backstage com araras, espelhos, frigobar e módulos de apoio para eventos, shows, convenções e produções itinerantes.",
+    specs: [
+      { label: "Itens", value: "Arara, espelho e frigobar" },
+      { label: "Aplicação", value: "Camarim, produção e apoio operacional" }
+    ],
+    features: [
+      "Organização e conforto para equipe e elenco",
+      "Apoio para trocas, maquiagem e descanso",
+      "Combinável com containers e módulos habitacionais"
+    ],
+    isFeatured: false,
+    badge: "Backstage"
+  },
+  {
+    id: "lixeiras-coleta-seletiva",
+    name: "Lixeiras Plásticas, Aramadas e Coleta Seletiva",
+    category: "limpeza",
+    categoryLabel: "Lixeiras & Coleta",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.42.29.jpeg",
+    shortDesc: "Soluções para limpeza, organização e descarte em eventos.",
+    fullDesc: "Disponibilidade de lixeiras plásticas, aramadas e conjuntos de coleta seletiva para eventos corporativos, feiras, áreas de alimentação e grandes públicos.",
+    specs: [
+      { label: "Modelos", value: "Pequeno, médio, grande e reciclável" },
+      { label: "Capacidade", value: "60 L a 100 L" }
+    ],
+    features: [
+      "Melhora a organização do espaço",
+      "Apoia operação de limpeza e descarte correto",
+      "Disponível em diferentes pontos do evento"
+    ],
+    isFeatured: false,
+    badge: "Operação"
+  },
+  {
+    id: "tecidos-pisos-grama-sintetica",
+    name: "Toalhas, Carpetes, Tecidos Tensionados e Grama Sintética",
+    category: "decoracao",
+    categoryLabel: "Tecidos, Pisos & Plantas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.45.38(1).jpeg",
+    shortDesc: "Acabamentos para ambientação, circulação e composição cenográfica.",
+    fullDesc: "Linhas de toalhas, carpetes, tecido tensionado e grama sintética para cenografia, cobertura de piso, decoração de stands e acabamento premium em eventos.",
+    specs: [
+      { label: "Itens", value: "Toalhas, carpetes, lycra e grama sintética" },
+      { label: "Formato", value: "Sob medida por metro linear ou projeto" }
+    ],
+    features: [
+      "Melhora a apresentação visual do evento",
+      "Ajuda na setorização e acabamento final",
+      "Combinação ideal com stands, palcos e lounges"
+    ],
+    isFeatured: false,
+    badge: "Acabamento"
+  },
+  {
+    id: "plantas-ornamentais-decoracao",
+    name: "Plantas Ornamentais para Decoração",
+    category: "decoracao",
+    categoryLabel: "Tecidos, Pisos & Plantas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/Galeria/Galery/WhatsApp Image 2026-08-31 at 11.44.04.jpeg",
+    shortDesc: "Composições verdes para recepção, lounge e cenografia.",
+    fullDesc: "Plantas ornamentais como Ficus Lyrata, Dracena Massangeana e outros modelos para dar acabamento natural a feiras, recepções e ambientes corporativos.",
+    specs: [
+      { label: "Modelos", value: "Ficus, dracena e opções sob consulta" },
+      { label: "Aplicação", value: "Decoração, recepção e ambientação" }
+    ],
+    features: [
+      "Valorização visual do espaço",
+      "Boa combinação com lounge e stands",
+      "Montagem alinhada ao projeto do evento"
+    ],
+    isFeatured: false,
+    badge: "Decoração"
+  },
+  {
+    id: "estruturas-podium-praticavel-barricada",
+    name: "Podium, Praticáveis, Barricadas e Fechamentos",
+    category: "estruturas",
+    categoryLabel: "Palcos & Box Truss",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/gradil-metal.png",
+    shortDesc: "Itens estruturais complementares para palco, circulação e segurança.",
+    fullDesc: "Catálogo com podium, piso praticável, barricada, gradil com capa, gradil metálico e fechamento galvanizado para montagem técnica e controle de público.",
+    specs: [
+      { label: "Aplicação", value: "Palco, backstage, fila e perímetro" },
+      { label: "Estrutura", value: "Aço galvanizado e alumínio modular" }
+    ],
+    features: [
+      "Completa projetos de palco e área técnica",
+      "Ajuda no fluxo e na proteção perimetral",
+      "Montagem rápida com equipe especializada"
+    ],
+    isFeatured: false,
+    badge: "Estrutura"
+  },
+  {
+    id: "tenda-chapeu-de-bruxa-cristal",
+    name: "Tenda Chapéu de Bruxa e Tenda Cristal",
+    category: "coberturas",
+    categoryLabel: "Tendas & Galpões",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/tendas.png",
+    shortDesc: "Coberturas elegantes para recepção, alimentação, ativações e eventos sociais.",
+    fullDesc: "Locação de tendas chapéu de bruxa e tendas cristal em diferentes medidas, com estrutura em alumínio e lona adequada ao projeto para eventos corporativos, sociais e promocionais.",
+    specs: [
+      { label: "Modelos", value: "Chapéu de bruxa e cristal" },
+      { label: "Estrutura", value: "Alumínio com medidas sob projeto" }
+    ],
+    features: [
+      "Excelente opção para composição visual refinada",
+      "Pode ser integrada a lounges, recepções e áreas gourmet",
+      "Montagem técnica com acabamento profissional"
+    ],
+    isFeatured: false,
+    badge: "Cobertura"
+  },
+  {
+    id: "cobertura-box-truss-personalizada",
+    name: "Coberturas em Box Truss Q15, Q20 e Q30",
+    category: "coberturas",
+    categoryLabel: "Tendas & Galpões",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/boxtruss.png",
+    shortDesc: "Estruturas personalizadas com uma ou duas quedas para eventos de diferentes portes.",
+    fullDesc: "Coberturas em Box Truss desenvolvidas conforme o projeto, com treliças Q15, Q20 e Q30 para áreas técnicas, palcos, ativações, feiras e espaços de circulação coberta.",
+    specs: [
+      { label: "Treliças", value: "Q15, Q20 e Q30" },
+      { label: "Configuração", value: "Uma ou duas quedas" }
+    ],
+    features: [
+      "Projeto sob medida conforme metragem do espaço",
+      "Compatível com iluminação, comunicação visual e fechamento lateral",
+      "Solução robusta para eventos técnicos e promocionais"
+    ],
+    isFeatured: false,
+    badge: "Sob Medida"
+  },
+  {
+    id: "porticos-backdrops-estruturas-visuais",
+    name: "Pórticos, Backdrops e Estruturas para Comunicação Visual",
+    category: "estruturas",
+    categoryLabel: "Palcos & Box Truss",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/boxtruss.png",
+    shortDesc: "Estruturas para entrada, sinalização, cenografia e presença de marca no evento.",
+    fullDesc: "Projetos com pórticos, backdrops, treliças e estruturas especiais para comunicação visual, largadas esportivas, recepções, feiras, congressos e ativações de marca.",
+    specs: [
+      { label: "Aplicações", value: "Entrada, backdrop, pórtico e cenografia" },
+      { label: "Estrutura", value: "Alumínio modular com montagem personalizada" }
+    ],
+    features: [
+      "Valoriza a identidade visual do evento",
+      "Ideal para ativações, fotos oficiais e sinalização técnica",
+      "Dimensionamento conforme o fluxo e o layout"
+    ],
+    isFeatured: true,
+    badge: "Comunicação Visual"
+  },
+  {
+    id: "passa-cabos-protecao-cabos",
+    name: "Passa-Cabos para Áreas Técnicas e Público",
+    category: "energia",
+    categoryLabel: "Geradores & Elétrica",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/servicos-de-eletrica.png",
+    shortDesc: "Proteção para cabos de energia, áudio e dados em áreas de circulação.",
+    fullDesc: "Passa-cabos de alta resistência para proteger cabos e garantir segurança de pessoas, veículos, empilhadeiras e operação técnica em eventos.",
+    specs: [
+      { label: "Resistência", value: "Até 4 toneladas" },
+      { label: "Uso", value: "Público, carros, paleteiras e apoio técnico" }
+    ],
+    features: [
+      "Organização e segurança do cabeamento",
+      "Reduz risco de tropeços e danos",
+      "Ideal para estruturas com alta circulação"
+    ],
+    isFeatured: false,
+    badge: "Segurança"
+  },
+  {
+    id: "tv-notebook-radio-comunicador",
+    name: "TV com Suporte, Notebook e Rádio Comunicador",
+    category: "apoio",
+    categoryLabel: "Apoio Operacional",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/projetores.jpg",
+    shortDesc: "Itens de apoio para credenciamento, operação, apresentações e coordenação.",
+    fullDesc: "Equipamentos de apoio como televisores com suporte, notebooks e rádios comunicadores para operação técnica, sala de controle, recepção e produção.",
+    specs: [
+      { label: "Itens", value: "TV, notebook e rádio comunicador" },
+      { label: "Uso", value: "Controle, recepção, reunião e backstage" }
+    ],
+    features: [
+      "Apoio prático para equipes e apresentações",
+      "Boa integração com audiovisual e produção",
+      "Locação flexível conforme o porte do evento"
+    ],
+    isFeatured: false,
+    badge: "Apoio"
+  },
+  {
+    id: "cafeteiras-refresqueiras-fogao",
+    name: "Cafeteiras, Refresqueiras e Fogão Industrial",
+    category: "apoio",
+    categoryLabel: "Apoio Operacional",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/bartender.png",
+    shortDesc: "Equipamentos para apoio de cozinha, recepção e área de alimentos.",
+    fullDesc: "Linha de apoio com cafeteiras de cápsula, refresqueiras e fogão industrial para áreas de staff, camarim, cozinha de apoio e atendimento ao público.",
+    specs: [
+      { label: "Aplicação", value: "Camarim, staff, buffet e backstage" },
+      { label: "Operação", value: "Itens sob demanda conforme evento" }
+    ],
+    features: [
+      "Mais conforto para equipe e convidados",
+      "Apoio operacional para eventos longos",
+      "Fácil combinação com bares e lounges"
+    ],
+    isFeatured: false,
+    badge: "Hospitalidade"
+  },
+  {
+    id: "totens-unifilas-catracas",
+    name: "Totens, Unifilas e Catracas",
+    category: "recepcao",
+    categoryLabel: "Balcões, Totens & Filas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/stands-para-feiras.png",
+    shortDesc: "Controle de acesso e organização de fluxo para entradas e ativações.",
+    fullDesc: "Estruturas para organização de recepção e filas com totens em MDF, unifilas, unifilas realeza e catracas para eventos, feiras e controle de credenciamento.",
+    specs: [
+      { label: "Itens", value: "Totem, unifila e catraca" },
+      { label: "Uso", value: "Entrada, fila, credenciamento e acesso" }
+    ],
+    features: [
+      "Melhora a experiência de chegada",
+      "Ajuda na sinalização e controle de público",
+      "Ideal para eventos com grande circulação"
+    ],
+    isFeatured: false,
+    badge: "Fluxo"
+  },
+  {
+    id: "sofa-pallet-estante-ombrelones",
+    name: "Sofá de Pallet, Estante Industrial e Ombrelones",
+    category: "mobiliario",
+    categoryLabel: "Bistrôs, Mesas & Lounge",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/moveis-e-utensilios.png",
+    shortDesc: "Composições para áreas externas, descanso e ativações de marca.",
+    fullDesc: "Mobiliário de apoio com sofá de pallet, estante industrial, ombrelones, banco industrial, pia inox móvel e armário baixo com chaves para operações e lounges.",
+    specs: [
+      { label: "Uso", value: "Lounge, externo, apoio e backstage" },
+      { label: "Perfil", value: "Visual industrial e funcional" }
+    ],
+    features: [
+      "Ambientes mais confortáveis e organizados",
+      "Excelente para eventos ao ar livre",
+      "Flexibilidade para projetos especiais"
+    ],
+    isFeatured: false,
+    badge: "Área Lounge"
+  },
+  {
+    id: "staff-eletrica-engenharia",
+    name: "Staff em Geral, Serviços de Elétrica e Engenharia",
+    category: "servicos",
+    categoryLabel: "Serviços Técnicos",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/alvara-para-eventos.png",
+    shortDesc: "Equipe operacional e suporte técnico para execução completa do evento.",
+    fullDesc: "Serviços especializados de staff, elétrica e engenharia para montagem, acompanhamento, ART, AVCB, adequações técnicas e operação durante todas as etapas do evento.",
+    specs: [
+      { label: "Áreas", value: "Operação, elétrica, engenharia e apoio" },
+      { label: "Cobertura", value: "Planejamento, montagem e evento ao vivo" },
+      { label: "Documentação", value: "ART, suporte técnico e AVCB sob demanda" }
+    ],
+    features: [
+      "Equipe pronta para demandas sob medida",
+      "Integra documentação técnica e execução",
+      "Mantém o padrão de qualidade da Sintetizza"
+    ],
+    isFeatured: true,
+    badge: "Serviço Técnico"
+  }
+];
+
+const GOOGLE_REVIEWS = [
+  {
+    id: 1,
+    author: "Rodrigo Mendes",
+    role: "Produtor de Eventos Corporativos",
+    event: "Convenção Anual de Vendas - 800 pessoas",
+    rating: 5,
+    date: "Há 2 semanas",
+    text: "A Sintetizza nos entregou o palco com estrutura Box Truss Q30 e painel de LED impecável. Montagem concluída 4 horas antes do prazo e com ART assinada por engenheiro. Nota 10!",
+    city: "Sorocaba/SP",
+    verified: true
+  },
+  {
+    id: 2,
+    author: "Camila Guimarães",
+    role: "Organizadora de Casamentos & Cerimonialista",
+    event: "Casamento no Campo - 350 convidados",
+    rating: 5,
+    date: "Há 1 mês",
+    text: "Contratamos tendas com fechamentos e climatizadores para o casamento. Ficou deslumbrante! Os climatizadores mantiveram a temperatura perfeita durante todo o evento.",
+    city: "Itu/SP",
+    verified: true
+  },
+  {
+    id: 3,
+    author: "Marcelo Fonseca",
+    role: "Diretor Comercial - Feira de Tecnologia",
+    event: "Estande e Pavilhão de Exposições",
+    rating: 5,
+    date: "Há 1 mês",
+    text: "Excelente atendimento comercial e equipe técnica de extrema confiança. Todos os montadores estavam com EPIs, laudos NR-10 e NR-35. O gerador silenciado supriu 100% da carga sem oscilação.",
+    city: "Campinas/SP",
+    verified: true
+  },
+  {
+    id: 4,
+    author: "Juliana Bertoni",
+    role: "Coordenadora de Marketing & Feiras",
+    event: "Lançamento Imobiliário",
+    rating: 5,
+    date: "Há 2 meses",
+    text: "Rapidez impressionante no envio do orçamento e total flexibilidade para adequar o projeto ao layout da tenda. Recomendo de olhos fechados para quem busca pontualidade e segurança.",
+    city: "Indaiatuba/SP",
+    verified: true
+  }
+];
+
+const FAQ_ITEMS = [
+  {
+    question: "Como funciona a emissão da ART (Anotação de Responsabilidade Técnica)?",
+    answer: "Todas as nossas estruturas de palcos, coberturas, galpões e sistemas elétricos contam com acompanhamento de engenheiro civil/mecânico habilitado pelo CREA. Emitimos a ART oficial para anexação ao alvará do Corpo de Bombeiros e órgãos públicos da sua cidade."
+  },
+  {
+    question: "Qual a antecedência recomendada para solicitar e reservar equipamentos?",
+    answer: "Recomendamos formalizar a reserva com antecedência de 15 a 45 dias para garantir a disponibilidade de datas na nossa agenda de montagem. Contudo, dispomos de frota própria e amplo estoque para atender demandas emergenciais e plantão rápido."
+  },
+  {
+    question: "A Sintetizza atende apenas Sorocaba ou outras cidades do estado de SP?",
+    answer: "Atendemos toda a Região Metropolitana de Sorocaba, Campinas, Jundiaí, Vale do Tietê, Grande São Paulo e interior de SP, com frota própria e equipe de logística especializada."
+  },
+  {
+    question: "Os equipamentos acompanham operadores técnicos durante o evento?",
+    answer: "Sim! Para painéis de LED, geradores de energia e demais soluções técnicas contratadas, disponibilizamos equipe especializada durante toda a duração do seu evento para garantir máxima segurança operacional."
+  },
+  {
+    question: "O que acontece em caso de falta de energia no local do evento?",
+    answer: "Oferecemos grupos geradores cabinados super silenciados (55kVA a 350kVA) com quadro de transferência automática (QTA) ou operação contínua, garantindo que telões, climatização e demais equipamentos essenciais não parem em nenhum momento."
+  },
+  {
+    question: "Como posso receber um orçamento detalhado com rapidez?",
+    answer: "Você pode adicionar os itens desejados pelo nosso construtor de orçamento no site e enviar via WhatsApp em 1 clique, ou entrar em contato direto pelo telefone (15) 99733-9422. Nosso time comercial retorna em até 15 minutos em horário comercial."
+  }
+];
+
 const CATEGORIES = [
-  { id: "all", name: "Todos os Itens", icon: "layers" },
-  { id: "estruturas", name: "Palcos & Box Truss", icon: "box" },
-  { id: "coberturas", name: "Tendas & Galpões", icon: "tent" },
-  { id: "audio", name: "Sonorização & Áudio", icon: "volume-2" },
-  { id: "iluminacao", name: "Iluminação & Cênica", icon: "sun" },
-  { id: "audiovisual", name: "Painéis de LED & Vídeo", icon: "tv" },
-  { id: "climatizacao", name: "Climatização", icon: "wind" },
-  { id: "energia", name: "Geradores & Elétrica", icon: "zap" },
-  { id: "stands", name: "Stands & Mobiliário", icon: "layout" },
-  { id: "operacao", name: "Engenharia & Laudos ART", icon: "shield-check" }
+  { id: "all", name: "Todos os Itens" },
+  { id: "estruturas", name: "Palcos & Box Truss" },
+  { id: "coberturas", name: "Tendas & Galpões" },
+  { id: "audiovisual", name: "Painéis de LED & Vídeo" },
+  { id: "climatizacao", name: "Climatização & Ventiladores" },
+  { id: "energia", name: "Geradores & Elétrica" },
+  { id: "stands", name: "Stands & Mobiliário" },
+  { id: "seguranca", name: "Arquibancadas & Estruturas" },
+  { id: "operacao", name: "Equipe & Laudos ART" }
 ];
 
 const PRODUCTS = [
@@ -37,411 +533,358 @@ const PRODUCTS = [
     name: "Palco Box Truss Q30 / Q50",
     category: "estruturas",
     categoryLabel: "Palcos & Box Truss",
-    image: "assets/images/original/boxtruss.png",
-    fallbackImage: "assets/images/original/principal-novo-2.png",
-    shortDesc: "Estrutura de alumínio modular reforçada com piso naval e ART.",
-    fullDesc: "Palco modular e coberturas em estrutura de alumínio Box Truss Q30 e Q50 de alta resistência. Inclui piso em compensado naval antiderrapante, escadas normatizadas, guarda-corpos de segurança e montagem completa por equipe qualificada NR-35.",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/boxtruss.png",
+    shortDesc: "Estrutura modular de alta resistência para palcos, feiras e coberturas.",
+    fullDesc: "Palcos modulares em alumínio naval estrutural Q30 e Q50, com piso de compensado naval antiderrapante, escadas, guarda-corpos e ART inclusa.",
     specs: [
-      { label: "Estrutura", value: "Alumínio Estrutural Q30 / Q50" },
-      { label: "Piso", value: "Compensado naval antiderrapante 18mm" },
-      { label: "Capacidade de Carga", value: "500 kg/m²" },
-      { label: "Certificação", value: "ART / CREA oficial inclusa" }
+      { label: "Material", value: "Alumínio Estrutural Q30 / Q50" },
+      { label: "Piso", value: "Compensado naval antiderrapante" },
+      { label: "Laudo", value: "ART / CREA oficial inclusa" }
     ],
     features: [
-      "Montagem modular em diversas alturas (0,60m a 2,00m)",
-      "Guarda-corpos e escadas de acesso normatizadas",
-      "Equipe homologada NR-35 para trabalho em altura",
-      "Dimensionamento de cobertura em duas ou quatro águas"
+      "Montagem modular sob medida",
+      "Escadas e guarda-corpos normatizados",
+      "Acompanhamento técnico especializado"
     ],
     isFeatured: true,
-    badge: "Mais Solicitado"
+    badge: "Mais Pedido"
   },
   {
     id: "gradil-metal-fechamento",
     name: "Gradil de Metal & Fechamentos",
     category: "estruturas",
     categoryLabel: "Palcos & Box Truss",
-    image: "assets/images/original/gradil-metal.png",
-    fallbackImage: "assets/images/original/principal-novo-2.png",
-    shortDesc: "Grades de contenção e disciplinadores de fluxo em aço galvanizado.",
-    fullDesc: "Módulos de contenção pesada e direcionadores de fluxo em aço galvanizado a fogo. Essenciais para isolamento de áreas VIP, controle de acesso, corredores de emergência e segurança patrimonial do público.",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/gradil-metal.png",
+    shortDesc: "Módulos de contenção, organização de filas e áreas VIP.",
+    fullDesc: "Grades de contenção em aço galvanizado para controle de fluxo de público, isolamento de áreas técnicas e segurança perimetral.",
     specs: [
-      { label: "Material", value: "Aço galvanizado a quente" },
-      { label: "Dimensões", value: "2,00m (comp.) x 1,20m (alt.)" },
-      { label: "Sistema de Encaixe", value: "Pino de engate rápido com trava" },
-      { label: "Base", value: "Pés tubulares de alta estabilidade" }
+      { label: "Material", value: "Aço galvanizado a fogo" },
+      { label: "Medidas", value: "2,00m x 1,20m" },
+      { label: "Encaixe", value: "Pino de engate rápido reforçado" }
     ],
     features: [
-      "Alta estabilidade contra empuxo de público",
-      "Montagem ágil e alinhamento milimétrico",
-      "Normatizado para segurança de grandes multidões"
+      "Alta estabilidade e segurança mecânica",
+      "Instalação e alinhamento rápido",
+      "Pintura e acabamento de alto padrão"
     ],
     isFeatured: false,
     badge: "Segurança"
   },
   {
-    id: "stands-para-feiras-bancadas",
-    name: "Stands para Feiras & Estandes Modulares",
-    category: "stands",
-    categoryLabel: "Stands & Mobiliário",
-    image: "assets/images/original/stands-para-feiras.png",
-    fallbackImage: "assets/images/original/bg10.png",
-    shortDesc: "Montagem de estandes modulares em Octanorm, piso elevado e testeiras.",
-    fullDesc: "Estruturas completas para expositores em feiras, congressos e convenções de negócios. Sistema modular Octanorm com placas TS brancas, piso elevado revestido em carpete, testeira de identificação, iluminação focal e balcão de atendimento.",
+    id: "tenda-piramidal-reforcada",
+    name: "Tenda Piramidal 10x10m / 5x5m",
+    category: "coberturas",
+    categoryLabel: "Tendas & Galpões",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/tendas.png",
+    shortDesc: "Cobertura modular em lona PVC blackout impermeável e antichamas.",
+    fullDesc: "Tendas piramidais estruturadas em aço zincado com lona de alta resistência, proteção UV e sistema modular de calhas para união de múltiplos módulos.",
     specs: [
-      { label: "Sistema", value: "Octanorm Alumínio Anodizado" },
-      { label: "Paredes", value: "Painéis TS brancos 4mm" },
-      { label: "Piso", value: "Tablado elevado com carpete resinado" },
-      { label: "Iluminação", value: "Spots LED focais inclusos" }
+      { label: "Tamanhos", value: "3x3m, 5x5m, 8x8m e 10x10m" },
+      { label: "Estrutura", value: "Aço tubular galvanizado" },
+      { label: "Lona", value: "PVC Blackout antichamas com laudo" }
     ],
     features: [
-      "Layouts customizados (3x3m, 6x3m, 10x5m ou especiais)",
-      "Testeira para aplicação de logotipo da empresa",
-      "Mobiliário de apoio disponível (mesas bistrô, banquetas)"
+      "Proteção solar e pluvial 100% estanque",
+      "Fechamentos laterais translúcidos ou opacos",
+      "Montagem técnica com equipe NR-35"
     ],
     isFeatured: true,
-    badge: "Corporativo"
+    badge: "Destaque"
+  },
+  {
+    id: "galpao-estruturado-temporario",
+    name: "Galpão Estruturado Duas Águas",
+    category: "coberturas",
+    categoryLabel: "Tendas & Galpões",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/galpoes.png",
+    shortDesc: "Galpão temporário de grande vão livre sem colunas centrais.",
+    fullDesc: "Estruturas de grande porte para feiras, convenções empresariais e armazenagem temporária com vão livre de 10m a 30m e pé direito alto.",
+    specs: [
+      { label: "Vão Livre", value: "10m a 30m de largura" },
+      { label: "Pé Direito", value: "4,00m a 6,00m" },
+      { label: "Norma Técnica", value: "NBR 6123 cálculo de ventos" }
+    ],
+    features: [
+      "100% de área útil interna aproveitável",
+      "Compatível com ar-condicionado e climatizadores",
+      "Portas antipânico e iluminação de emergência"
+    ],
+    isFeatured: false,
+    badge: "Grandes Áreas"
   },
   {
     id: "painel-led-p39-outdoor-indoor",
     name: "Painel de LED P3.9 Alta Resolução",
     category: "audiovisual",
     categoryLabel: "Painéis de LED & Vídeo",
-    image: "assets/images/original/locacao-de-painel-de-led.png",
-    fallbackImage: "assets/images/original/principal-novo-3.png",
-    shortDesc: "Telas de alta definição e brilho para ambientes externos e internos.",
-    fullDesc: "Gabinetes de painel de LED P3.9 de altíssima taxa de atualização (3840Hz), anti-flicker e excelente reprodução cromática. Perfeitos para transmissão ao vivo, conferências corporativas, telões de palco, exibição de patrocinadores e shows.",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/locacao-de-painel-de-led.png",
+    shortDesc: "Telas de altíssimo brilho para ambientes externos e internos.",
+    fullDesc: "Módulos de painel de LED P3.9 com processadora de vídeo 4K, switcher de cortes rápidos e suporte para transmissão de slides, vídeos e câmeras ao vivo.",
     specs: [
-      { label: "Pixel Pitch", value: "3.91 mm (Indoor / Outdoor)" },
-      { label: "Taxa de Atualização", value: "3840 Hz (Gravação sem linhas)" },
-      { label: "Brilho", value: "5.500 nits (Alta visibilidade ao sol)" },
-      { label: "Processamento", value: "Processadora de Vídeo 4K / Switcher" }
+      { label: "Pixel Pitch", value: "3.91 mm alta definição" },
+      { label: "Taxa de Atualização", value: "3840 Hz (Anti-flicker para câmeras)" },
+      { label: "Ambiente", value: "Outdoor (à prova d'água) ou Indoor" }
     ],
     features: [
-      "Transmissão de câmeras, apresentações PPT e vídeos Full HD/4K",
-      "Montagem suspensa (fly) em Box Truss ou em solo com estrutura própria",
-      "Operador técnico de switcher e vídeo durante todo o evento"
+      "Transmissão de apresentações, vídeos e feeds ao vivo",
+      "Montagem em totem solo, parede ou suspenso em Box Truss",
+      "Operador de vídeo e processadora inclusos"
     ],
     isFeatured: true,
-    badge: "Alta Tecnologia"
+    badge: "Alta Resolução"
   },
   {
-    id: "som-line-array-profissional",
-    name: "Sistema de Som Line Array & Riders",
-    category: "audio",
-    categoryLabel: "Sonorização & Áudio",
-    image: "assets/images/original/som-e-luz.png",
-    fallbackImage: "assets/images/original/sintetizza-eventos.jpg",
-    shortDesc: "Sonoplastia de alta fidelidade e pressão sonora homogênea para shows e palestras.",
-    fullDesc: "Sistemas profissionais de áudio Line Array, subwoofers de alta potência, mesas digitais de 32 a 64 canais, microfones sem fio UHF com varredura digital e monitoramento de palco. Atendimento desde reuniões executivas até grandes festivais.",
+    id: "projetores-alta-potencia-telas",
+    name: "Projetores & Telas de Projeção",
+    category: "audiovisual",
+    categoryLabel: "Painéis de LED & Vídeo",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/projetores.jpg",
+    shortDesc: "Projetores laser multimídia e telas tensionadas para conferências.",
+    fullDesc: "Equipamentos de projeção de alta luminosidade para auditórios, hotéis e salas corporativas, com telas tensionadas de 100\" a 300\".",
     specs: [
-      { label: "Capacidade", value: "Eventos de 50 a 10.000 pessoas" },
-      { label: "Mesa de Som", value: "Mesa Digital 32/64 Canais (Yamaha/Behringer)" },
-      { label: "Microfonia", value: "Sistemas Shure / Sennheiser UHF" },
-      { label: "Processamento", value: "DSP Digital com alinhamento acústico" }
+      { label: "Potência", value: "5.000 a 10.000 ANSI Lúmens Laser" },
+      { label: "Telas", value: "100\" a 300\" tensionadas com tripé ou truss" },
+      { label: "Conexões", value: "HDMI 4K, SDI e conversores sem fio" }
     ],
     features: [
-      "Engenheiro / Técnico de som dedicado durante o evento",
-      "Microfones sem fio bastão, headset e lapela",
-      "Alinhamento acústico conforme a geometria do local"
+      "Monitores de retorno para palestrantes",
+      "Passadores de slides e splitters HDMI inclusos"
     ],
-    isFeatured: true,
-    badge: "Destaque"
-  },
-  {
-    id: "iluminacao-cenica-moving-led",
-    name: "Iluminação Cênica & Moving Heads",
-    category: "iluminacao",
-    categoryLabel: "Iluminação & Cênica",
-    image: "assets/images/original/som-e-luz.png",
-    fallbackImage: "assets/images/original/principal-novo-3.png",
-    shortDesc: "Kits de iluminação DMX com Moving Heads Beam/Spot, refletores Par LED e haze.",
-    fullDesc: "Projetos luminotécnicos que transformam o ambiente do evento. Inclui refletores Par LED RGBW para iluminação arquitetural e cênica, moving heads Beam 230W/Spot para efeitos dinâmicos, luz branca quente para palestrantes e mesa DMX controlada por operador.",
-    specs: [
-      { label: "Moving Heads", value: "Beam 230W 7R / Spot LED" },
-      { label: "Refletores", value: "Par LED 18x18W Full RGBW" },
-      { label: "Controle", value: "Mesa DMX / Avolites Titan" },
-      { label: "Efeitos", value: "Máquina de fumaça cênica (Haze) inclusa" }
-    ],
-    features: [
-      "Criação de cenários de luz personalizados com a identidade do evento",
-      "Iluminação focal anti-sombra para fotos e filmagens",
-      "Operador de iluminação profissional"
-    ],
-    isFeatured: true,
-    badge: "Cênica"
-  },
-  {
-    id: "galpao-estruturado-duas-aguas",
-    name: "Galpão Estruturado Duas Águas",
-    category: "coberturas",
-    categoryLabel: "Tendas & Galpões",
-    image: "assets/images/original/galpoes.png",
-    fallbackImage: "assets/images/original/sintetizza-eventos.jpg",
-    shortDesc: "Galpões temporários de grande porte sem colunas internas.",
-    fullDesc: "Grandes estruturas modulares de duas águas em perfis de alumínio e aço zincado, com vãos livres de 10m a 30m de largura e comprimento expansível a cada 5 metros. Cobertura em lona PVC blackout com laudo antichamas e proteção térmica.",
-    specs: [
-      { label: "Vão Livre", value: "10m, 15m, 20m, 25m e 30m sem colunas" },
-      { label: "Pé Direito", value: "4,00m a 6,00m" },
-      { label: "Lona", value: "PVC Blackout antichamas e antimofo" },
-      { label: "Norma de Vento", value: "Conformidade ABNT NBR 6123" }
-    ],
-    features: [
-      "100% de área útil interna aproveitável",
-      "Fechamentos laterais rígidos ou em lona com portas de emergência",
-      "Totalmente compatível com sistemas de climatização industrial"
-    ],
-    isFeatured: true,
-    badge: "Grandes Áreas"
+    isFeatured: false,
+    badge: "Corporativo"
   },
   {
     id: "climatizadores-evaporativos-industriais",
     name: "Climatizadores Evaporativos Ecológicos",
     category: "climatizacao",
-    categoryLabel: "Climatização",
-    image: "assets/images/original/climatizadores.png",
-    fallbackImage: "assets/images/original/bg10.png",
-    shortDesc: "Redução de até 12°C na temperatura com renovação contínua de ar fresco.",
-    fullDesc: "Solução sustentável e de alto rendimento para climatização de tendas, galpões, áreas gastronômicas e pavilhões. Os climatizadores evaporativos insuflam ar 100% renovado, reduzindo a sensação térmica e eliminando poeira e odores com baixo ruído.",
+    categoryLabel: "Climatização & Ventiladores",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/climatizadores.png",
+    shortDesc: "Redução de até 10°C na temperatura e renovação contínua de ar fresco.",
+    fullDesc: "Climatizadores ecológicos portáteis de alta vazão para tendas, galpões e áreas abertas. Reduzem o calor com baixíssimo consumo de energia.",
     specs: [
-      { label: "Vazão de Ar", value: "18.000 a 30.000 m³/h por equipamento" },
+      { label: "Vazão de Ar", value: "18.000 a 30.000 m³/h" },
       { label: "Área de Cobertura", value: "150 a 300 m² por unidade" },
-      { label: "Consumo de Energia", value: "Baixo consumo elétrico (monofásico/trifásico)" },
-      { label: "Nível de Ruído", value: "Operação silenciosa para palestras" }
+      { label: "Ruído", value: "Operação super silenciosa" }
     ],
     features: [
-      "Ar 100% renovado e umidificado sem molhar o ambiente",
-      "Ideal para eventos abertos ou coberturas temporárias",
-      "Instalação rápida com abastecimento de água integrado"
+      "Renovação de ar 100% fresco e filtrado",
+      "Reservatório interno ou abastecimento contínuo",
+      "Sem gotejamento ou névoa molhada"
     ],
     isFeatured: false,
-    badge: "Climatização"
+    badge: "Conforto Térmico"
+  },
+  {
+    id: "ventiladores-industriais-alta-vazao",
+    name: "Ventiladores Industriais de Alta Vazão",
+    category: "climatizacao",
+    categoryLabel: "Climatização & Ventiladores",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/locacao-de-ventiladores.png",
+    shortDesc: "Circulação de ar de alta potência para galpões e pavilhões.",
+    fullDesc: "Ventiladores industriais de pedestal e parede para circulação eficiente de ar em grandes eventos, áreas de montagem e estandes.",
+    specs: [
+      { label: "Diâmetro", value: "65cm a 100cm" },
+      { label: "Oscilação", value: "Giro horizontal automático" },
+      { label: "Alimentação", value: "127V / 220V" }
+    ],
+    features: [
+      "Potente fluxo de ar direcional",
+      "Grade de proteção reforçada",
+      "Fácil movimentação no evento"
+    ],
+    isFeatured: false,
+    badge: "Circulação"
   },
   {
     id: "gerador-silenciado-grupos",
     name: "Grupos Geradores Silenciados (55kVA a 350kVA)",
     category: "energia",
     categoryLabel: "Geradores & Elétrica",
-    image: "assets/images/original/geradores-1.png",
-    fallbackImage: "assets/images/original/sintetizza-eventos.jpg",
-    shortDesc: "Fornecimento de energia contínua e sem oscilações com técnico operador.",
-    fullDesc: "Grupos geradores cabinados super silenciados (65 dB a 7m), desenvolvidos especialmente para eventos onde o nível de ruído é crítico. Acompanha cabeamento flexível de potência, quadros de distribuição QTA/QTM e operador técnico de plantão.",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/geradores-1.png",
+    shortDesc: "Fornecimento de energia contínua e segura com operador técnico.",
+    fullDesc: "Grupos geradores cabinados super silenciados de 55kVA a 350kVA com cabos blindados, passa-cabos e quadros de distribuição normatizados.",
     specs: [
-      { label: "Potências Disponíveis", value: "55 kVA, 100 kVA, 150 kVA, 250 kVA e 350 kVA" },
-      { label: "Nível de Ruído", value: "Cabinagem Super Silenciada (65 dB)" },
-      { label: "Tensões de Saída", value: "127V / 220V / 380V Trifásico" },
-      { label: "Segurança", value: "Passa-cabos emborrachados inclusos" }
+      { label: "Potências", value: "55kVA, 110kVA, 150kVA e 350kVA" },
+      { label: "Nível de Ruído", value: "Super Silenciado (65 dB a 7m)" },
+      { label: "Tensão", value: "127V / 220V / 380V Trifásico" }
     ],
     features: [
-      "Técnico eletricista / operador presente durante toda a operação",
-      "Quadro de transferência automática ou manual (QTA/QTM)",
-      "Autonomia de combustível dimensionada para a carga do evento"
+      "Operador técnico presente durante todo o evento",
+      "Abastecimento de combustível incluso",
+      "Passa-cabos emborrachados para tráfego de pessoas"
     ],
     isFeatured: false,
-    badge: "Energia Segura"
+    badge: "Autonomia 100%"
   },
   {
-    id: "tenda-piramidal-reforcada",
-    name: "Tendas Piramidais Galvanizadas (5x5m a 10x10m)",
-    category: "coberturas",
-    categoryLabel: "Tendas & Galpões",
-    image: "assets/images/original/tendas.png",
-    fallbackImage: "assets/images/original/galpoes.png",
-    shortDesc: "Coberturas modulares resistentes com lona antichamas e proteção UV.",
-    fullDesc: "Tendas estruturadas em tubos de aço galvanizado a fogo com encaixes de alta pressão. Cobertura em lona PVC de alta gramatura com tratamento antichamas, blackout e proteção total contra chuva e raios solares.",
-    specs: [
-      { label: "Modulações", value: "3x3m, 5x5m, 8x8m, 10x10m e acoplamentos" },
-      { label: "Estrutura", value: "Aço carbono galvanizado anticorrosão" },
-      { label: "Lona", value: "PVC vulcanizado com blackout térmico" },
-      { label: "Ancoragem", value: "Estacas de aço / blocos de contrapeso" }
-    ],
-    features: [
-      "Fechamentos laterais translúcidos ou opacos opcionais",
-      "Calhas de escoamento pluvial entre módulos acoplados",
-      "Montagem rápida e segura por equipe certificada NR-35"
-    ],
-    isFeatured: false,
-    badge: "Coberturas"
-  },
-  {
-    id: "arquibancadas-modulares-seguranca",
-    name: "Arquibancadas Modulares & Estruturas para Público",
-    category: "estruturas",
-    categoryLabel: "Palcos & Box Truss",
-    image: "assets/images/original/arquibancadas.png",
-    fallbackImage: "assets/images/original/principal-novo-2.png",
-    shortDesc: "Módulos de arquibancada com degraus antiderrapantes, guarda-corpos e ART.",
-    fullDesc: "Arquibancadas tubulares modulares em aço galvanizado para eventos esportivos, desfiles, convenções e shows. Montagem nivelada com corrimãos, guarda-corpos laterais/traseiros e capacidade de carga dimensionada para grandes públicos.",
-    specs: [
-      { label: "Capacidade", value: "Projetos de 100 a 5.000 assentos" },
-      { label: "Piso", value: "Compensado naval antiderrapante 18mm" },
-      { label: "Segurança", value: "Guarda-corpos de 1,20m com tela de proteção" },
-      { label: "Norma", value: "ABNT NBR 14170 e laudo ART/CREA" }
-    ],
-    features: [
-      "Assentos em madeira tratada ou concha plástica",
-      "Corredores de circulação e escadas com iluminação de emergência",
-      "Laudo de estabilidade estrutural assinado por engenheiro"
-    ],
-    isFeatured: true,
-    badge: "Alta Capacidade"
-  },
-  {
-    id: "container-camarim-bilheteria",
-    name: "Containers Habitáveis (Camarim, Escritório e Bilheteria)",
-    category: "stands",
-    categoryLabel: "Stands & Mobiliário",
-    image: "assets/images/original/container.png",
-    fallbackImage: "assets/images/original/stands-para-feiras.png",
-    shortDesc: "Módulos termoacústicos climatizados para camarins, produção e bilheterias.",
-    fullDesc: "Containers marítimos adaptados com revestimento térmico, ar-condicionado Split, piso vinílico, pontos elétricos e fechadura de segurança. Perfeitos para camarins de artistas, salas de produção técnica e bilheterias com guichês.",
-    specs: [
-      { label: "Dimensões", value: "6,00m (comp.) x 2,40m (larg.) x 2,60m (alt.)" },
-      { label: "Climatização", value: "Ar-condicionado Split 12.000 a 18.000 BTUs" },
-      { label: "Revestimento", value: "Isolamento termoacústico e piso vinílico" }
-    ],
-    features: [
-      "Modelos com banheiro privativo e chuveiro",
-      "Mobiliário básico incluso (espelho camarim, sofá, frigobar)",
-      "Entrega e posicionamento com caminhão Munck próprio"
-    ],
-    isFeatured: false,
-    badge: "Infraestrutura"
-  },
-  {
-    id: "coordenacao-tecnica-art-alvara",
-    name: "Engenharia Técnica, Laudo ART & Alvará de Eventos",
-    category: "operacao",
-    categoryLabel: "Engenharia & Laudos ART",
-    image: "assets/images/original/alvara-para-eventos.png",
-    fallbackImage: "assets/images/original/sintetizza-eventos.jpg",
-    shortDesc: "Responsabilidade técnica com engenheiro registrado no CREA e laudos de segurança.",
-    fullDesc: "Assessoria técnica e emissão de Anotação de Responsabilidade Técnica (ART) por engenheiro civil e mecânico devidamente habilitado no CREA-SP. Inclui laudos de estabilidade mecânica, projeto estrutural de palcos e coberturas, e suporte na vistoria do Corpo de Bombeiros (AVCB).",
-    specs: [
-      { label: "Registro", value: "CREA-SP / Conselho Regional de Engenharia" },
-      { label: "Normas Atendidas", value: "NR-10, NR-35, NBR 6123 e Instruções Técnicas CB" },
-      { label: "Documentação", value: "ART estrutural, elétrica e memorial de cálculo" }
-    ],
-    features: [
-      "Vistoria presencial e acompanhamento da montagem in loco",
-      "Tranquilidade jurídica e conformidade para produtoras e prefeituras",
-      "Equipe de montagem equipada com EPIs e treinamentos válidos"
-    ],
-    isFeatured: false,
-    badge: "Engenharia"
-  },
-  {
-    id: "projetores-alta-potencia-telas",
-    name: "Projetores Laser & Telas de Alta Definição",
-    category: "audiovisual",
-    categoryLabel: "Painéis de LED & Vídeo",
-    image: "assets/images/original/projetores.jpg",
-    fallbackImage: "assets/images/original/locacao-de-painel-de-led.png",
-    shortDesc: "Projeção de 5.000 a 10.000 ANSI lúmens para auditórios e conferências.",
-    fullDesc: "Equipamentos de projeção corporativa de alto contraste e luminosidade, ideais para auditórios, salas de convenções, workshops e salas plenárias. Telas tensionadas de 100 a 300 polegadas em formato 16:9.",
-    specs: [
-      { label: "Brilho", value: "5.000 a 10.000 ANSI Lúmens" },
-      { label: "Resolução", value: "Full HD / WUXGA Laser" },
-      { label: "Telas", value: "100\" a 300\" tensionadas (front e rear projection)" }
-    ],
-    features: [
-      "Passadores de slides com laser pointer e retorno de palco",
-      "Cabeamento HDMI e SDI blindado para longas distâncias",
-      "Suporte e suporte técnico audiovisual de plantão"
-    ],
-    isFeatured: false,
-    badge: "Projeção"
-  },
-  {
-    id: "servicos-de-eletrica-subestacao",
-    name: "Instalações Elétricas & Quadros de Distribuição",
+    id: "servicos-eletrica-distribuicao",
+    name: "Instalações Elétricas & Quadros QTA",
     category: "energia",
     categoryLabel: "Geradores & Elétrica",
-    image: "assets/images/original/servicos-de-eletrica.png",
-    fallbackImage: "assets/images/original/geradores-1.png",
-    shortDesc: "Infraestrutura elétrica provisória, quadros QTA/QTM e cabeamento blindado com NR-10.",
-    fullDesc: "Dimensionamento e execução de rede elétrica temporária de baixa e média tensão para praças de alimentação, iluminação de pavilhões, stands e palcos. Instalação de quadros com proteção DR, disjuntores termomagnéticos e cabos flexíveis antichamas.",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/servicos-de-eletrica.png",
+    shortDesc: "Infraestrutura elétrica segura, quadros de distribuição e laudos.",
+    fullDesc: "Dimensionamento elétrico temporário para eventos com quadros de transferência automática (QTA), disjuntores DR e conformidade total com a norma NR-10.",
     specs: [
-      { label: "Norma", value: "NR-10 e ABNT NBR 5410" },
-      { label: "Proteção", value: "Quadros com DR e disjuntores blindados" },
-      { label: "Cabos", value: "Cabos flexíveis unipolares e multipolares antichamas" },
-      { label: "Passa-cabos", value: "Protetores de cabos emborrachados para tráfego pesado" }
+      { label: "Norma", value: "NR-10 e NBR 5410" },
+      { label: "Quadros", value: "QTA e QDF com proteção DR" },
+      { label: "ART", value: "Laudo elétrico por engenheiro" }
     ],
     features: [
-      "Laudo de conformidade elétrica e emissão de ART específica",
-      "Eletricistas certificados presentes durante todo o evento",
-      "Equilíbrio de fases e monitoramento constante de amperagem"
+      "Distribuição balanceada por fase",
+      "Passa-cabos de alta resistência",
+      "Monitoramento de voltagem em tempo real"
     ],
     isFeatured: false,
     badge: "NR-10"
   },
   {
-    id: "mobiliario-mesas-bistros",
-    name: "Mobiliário para Eventos & Mesas Bistrô",
+    id: "stands-para-feiras-bancadas",
+    name: "Stands para Feiras & Mobiliário",
     category: "stands",
     categoryLabel: "Stands & Mobiliário",
-    image: "assets/images/original/moveis-e-utensilios.png",
-    fallbackImage: "assets/images/original/stands-para-feiras.png",
-    shortDesc: "Mesas bistrô, banquetas altas, cadeiras estofadas e balcões de atendimento.",
-    fullDesc: "Locação de mobiliário corporativo de alta qualidade para estandes, áreas VIP, lounges e plenárias. Peças higienizadas, cromadas e em madeira laqueada para complementar a estética do seu evento.",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/stands-para-feiras.png",
+    shortDesc: "Montagem de estandes modulares, balcões e pisos elevados.",
+    fullDesc: "Divisórias modulares tipo Octanorm ou Box Truss, testeiras personalizadas, piso tablado elevado com carpete e mobiliário básico de apoio.",
     specs: [
-      { label: "Tipos", value: "Bistrôs, banquetas, cadeiras e sofás modulares" },
-      { label: "Acabamento", value: "Cromado, aço escovado, preto e branco" },
-      { label: "Higiene", value: "Embalados e higienizados por unidade" }
+      { label: "Sistema", value: "Modular Octanorm / Alumínio Q30" },
+      { label: "Piso", value: "Tablado elevado nivelado com carpete" }
     ],
     features: [
-      "Entrega e disposição conforme layout da planta",
-      "Substituição imediata em caso de avaria",
-      "Combinações exclusivas para estandes Octanorm"
+      "Projetos sob medida para feiras e exposições",
+      "Iluminação focal e tomadas dedicadas",
+      "Montagem rápida e limpa"
+    ],
+    isFeatured: false,
+    badge: "Feiras"
+  },
+  {
+    id: "bancadas-mobiliario-eventos",
+    name: "Bancadas, Balcões & Mobiliário",
+    category: "stands",
+    categoryLabel: "Stands & Mobiliário",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/bancadas.png",
+    shortDesc: "Balcões de credenciamento, bancadas de buffet e mobiliário.",
+    fullDesc: "Mobiliário funcional para eventos corporativos, feiras, recepções e áreas de atendimento ao público com acabamento impecável.",
+    specs: [
+      { label: "Modelos", value: "Balcões retos, curvos e bistrôs" },
+      { label: "Acabamento", value: "Madeira, fórmica e alumínio" }
+    ],
+    features: [
+      "Ideal para credenciamento e recepção",
+      "Fácil higienização e organização",
+      "Entrega e montagem no local"
     ],
     isFeatured: false,
     badge: "Mobiliário"
   },
   {
-    id: "estruturas-eventos-esportivos",
-    name: "Pórticos de Largada & Estruturas Esportivas",
-    category: "estruturas",
-    categoryLabel: "Palcos & Box Truss",
-    image: "assets/images/original/eventos-esportivos.png",
-    fallbackImage: "assets/images/original/principal-novo-2.png",
-    shortDesc: "Pórticos em Box Truss Q30 para corridas, pódios e gradis de isolamento.",
-    fullDesc: "Infraestrutura completa para circuitos de corrida de rua, ciclismo, campeonatos e arenas esportivas. Inclui pórticos de largada e chegada, pódios de premiação, torres de cronometragem e fechamentos de segurança.",
+    id: "arquibancadas-modulares-seguranca",
+    name: "Arquibancadas Modulares",
+    category: "seguranca",
+    categoryLabel: "Arquibancadas & Estruturas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/arquibancadas.png",
+    shortDesc: "Arquibancadas seguras com assentos normatizados e guarda-corpo.",
+    fullDesc: "Estruturas de arquibancadas modulares tubulares em aço galvanizado com piso antiderrapante, escadas de acesso e laudo ART para rodeios, esportes e shows.",
     specs: [
-      { label: "Pórticos", value: "Vãos de 6m a 14m em Box Truss Q30" },
-      { label: "Ancoragem", value: "Blocos de concreto e contraventamento" },
-      { label: "Comunicação", value: "Suportes para testeiras e lonas de patrocinadores" }
+      { label: "Capacidade", value: "Módulos de 50 a 5.000 lugares" },
+      { label: "Segurança", value: "Guarda-corpos reforçados e ART inclusa" },
+      { label: "Material", value: "Aço estrutural galvanizado" }
     ],
     features: [
-      "Estrutura com laudo de estabilidade mecânica",
-      "Montagem ágil na madrugada para liberação de vias públicas",
-      "Compatível com fixação de telões de LED e cronômetros digitais"
+      "Atende rigorosamente às normas dos Bombeiros",
+      "Escadas de acesso com corrimão duplo",
+      "Montagem rápida em qualquer terreno plano"
     ],
     isFeatured: false,
-    badge: "Esportivo"
+    badge: "Eventos de grande porte"
   },
   {
-    id: "estruturas-eventos-corporativos",
-    name: "Plenárias & Estruturas para Convenções",
-    category: "estruturas",
-    categoryLabel: "Palcos & Box Truss",
-    image: "assets/images/original/eventos-corporativos.png",
-    fallbackImage: "assets/images/original/sintetizza-eventos.jpg",
-    shortDesc: "Cenografia, fundos de palco, púlpitos e iluminação corporativa para convenções.",
-    fullDesc: "Soluções integradas para reuniões estratégicas, lançamentos de produtos, assembleias e convenções de vendas. Unimos palcos discretos com carpete, totens de identificação, backdrops e integração total com áudio e vídeo.",
+    id: "ambulancia-medica-uti-eventos",
+    name: "Ambulância Médica & UTI para Eventos",
+    category: "seguranca",
+    categoryLabel: "Arquibancadas & Estruturas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/ambulancia-medica---uti-1000x713.png",
+    shortDesc: "Cobertura médica de emergência com UTI móvel e equipe de saúde.",
+    fullDesc: "Posto médico móvel e ambulância UTI com enfermeiro/médico para atendimento de urgência e conformidade com alvará sanitário e de bombeiros.",
     specs: [
-      { label: "Acabamento", value: "Carpete novo e saias de palco em tecido antichama" },
-      { label: "Backdrop", value: "Estruturas Box Truss envelopadas ou madeira" },
-      { label: "Púlpitos", value: "Acrílico com passagem oculta de cabos" }
+      { label: "Tipo", value: "Ambulância Básica ou UTI Móvel" },
+      { label: "Equipe", value: "Socorrista, Enfermeiro e Médico sob demanda" },
+      { label: "Equipamentos", value: "Desfibrilador (DEA), oxigênio e maca" }
     ],
     features: [
-      "Montagem com isolamento acústico e visual executivo",
-      "Adequação rigorosa a hotéis e centros de convenções",
-      "Equipe com traje executivo para suporte durante o evento"
+      "Exigência legal para eventos de grande público",
+      "Pronto atendimento no local",
+      "Plantão durante todo o evento"
     ],
-    isFeatured: true,
-    badge: "Executivo"
-  }
+    isFeatured: false,
+    badge: "Saúde & Alvará"
+  },
+  {
+    id: "container-modulos-habitacionais",
+    name: "Containers & Módulos Habitacionais",
+    category: "seguranca",
+    categoryLabel: "Arquibancadas & Estruturas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/container.png",
+    shortDesc: "Módulos climatizados para camarim, bilheteria e produção.",
+    fullDesc: "Containers habitacionais de 20 e 40 pés equipados com ar-condicionado, tomadas, iluminação LED e fechadura de segurança para camarins e equipes técnicas.",
+    specs: [
+      { label: "Tamanhos", value: "6,00m x 2,40m (20 pés) e 12,00m (40 pés)" },
+      { label: "Conforto", value: "Ar-condicionado Split e isolamento" },
+      { label: "Usos", value: "Camarim, bilheteria, depósito e coordenação" }
+    ],
+    features: [
+      "Total privacidade e segurança para artistas e produção",
+      "Pronto para uso (plug & play elétrico)",
+      "Pintura e acabamento interno de alto padrão"
+    ],
+    isFeatured: false,
+    badge: "Produção"
+  },
+  {
+    id: "brinquedos-inflaveis-recreacao",
+    name: "Brinquedos Infláveis & Área Kids",
+    category: "seguranca",
+    categoryLabel: "Arquibancadas & Estruturas",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/brinquedos-infllaveis.png",
+    shortDesc: "Espaço kids completo para feiras, festivais e confraternizações.",
+    fullDesc: "Tobogãs infláveis, castelos pula-pula, futebol de sabão e camas elásticas com monitores treinados para entretenimento seguro infantil em eventos.",
+    specs: [
+      { label: "Modelos", value: "Tobogã, Castelo Pula-Pula e Cama Elástica" },
+      { label: "Monitores", value: "Equipe de recreação inclusa sob demanda" },
+      { label: "Higiene", value: "Higienização completa antes de cada montagem" }
+    ],
+    features: [
+      "Diversão garantida para famílias e crianças",
+      "Lonas vulcanizadas de alta resistência e segurança",
+      "Motores com proteção elétrica"
+    ],
+    isFeatured: false,
+    badge: "Área Kids"
+  },
+  {
+    id: "estrutura-bar-bartender",
+    name: "Estruturas de Bar & Atendimento",
+    category: "stands",
+    categoryLabel: "Stands & Mobiliário",
+    image: "https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/bartender.png",
+    shortDesc: "Bares modulares iluminados e estações completas de drinks.",
+    fullDesc: "Balcões modulares para operação de bar, chopeiras, cuba de gelo e atendimento rápido em festas, festivais e casamentos.",
+    specs: [
+      { label: "Estrutura", value: "Módulos retos e em L com testeira" },
+      { label: "Iluminação", value: "Fitas de LED decorativas" }
+    ],
+    features: [
+      "Agilidade no atendimento ao público",
+      "Design moderno e atraente",
+      "Montagem compacta e higiênica"
+    ],
+    isFeatured: false,
+    badge: "Bar & Drinks"
+  },
 ];
+
+CATEGORIES.push(...EXTRA_CATEGORIES);
+PRODUCTS.push(...EXTRA_PRODUCTS);
 
 function getProductById(id) {
   return PRODUCTS.find(p => p.id === id);
@@ -463,5 +906,3 @@ function searchProducts(query) {
     (p.specs && p.specs.some(s => s.value.toLowerCase().includes(q) || s.label.toLowerCase().includes(q)))
   );
 }
-
-
