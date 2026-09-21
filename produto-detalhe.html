@@ -4,13 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ficha Técnica do Equipamento | Sintetizza Eventos</title>
-  <meta name="description" content="Ficha técnica, especificações de montagem e solicitação de orçamento de estruturas e equipamentos para eventos.">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <meta name="description" content="Especificações técnicas, diferenciais e solicitação de orçamento de equipamentos e estruturas para eventos.">
+  <link rel="canonical" href="https://www.sintetizza.com.br/produto-detalhe.html">
   
-  <!-- Fontes Google -->
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/logoAuzl.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/logoAuzl.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#F1CF00">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="css/variables.css">
@@ -24,23 +30,23 @@
   <div id="site-header-container"></div>
 
   <!-- Banner com Breadcrumb -->
-  <section class="page-banner" style="padding: calc(var(--space-3xl) + 12px) 0 var(--space-xl) 0;">
+  <section class="page-banner" style="padding: calc(var(--space-2xl) + 10px) 0 var(--space-xl) 0;">
     <div class="container">
       <div class="breadcrumb">
         <a href="index.html">Início</a>
         <span>/</span>
-        <a href="produtos.html">Produtos & Soluções</a>
+        <a href="produtos.html">Equipamentos & Soluções</a>
         <span>/</span>
-        <span id="detail-breadcrumb-product" style="color: var(--color-brand); font-weight: 700;">Detalhes</span>
+        <span id="detail-breadcrumb-product" style="color: var(--color-text-primary); font-weight: 700;">Detalhes</span>
       </div>
     </div>
   </section>
 
-  <!-- Conteúdo Principal da Ficha Técnica -->
+  <!-- Conteúdo Principal do Produto -->
   <section class="section section-white">
     <div class="container" id="product-detail-root">
-      <div style="text-align: center; padding: 60px 0; color: var(--color-slate-500);">
-        Carregando detalhes técnicos do equipamento...
+      <div style="text-align: center; padding: 60px 0; color: var(--color-text-secondary); font-size: 1.1rem;">
+        Carregando ficha técnica do equipamento...
       </div>
     </div>
   </section>
@@ -50,8 +56,7 @@
     <div class="container">
       <div class="section-header text-left" style="margin-bottom: var(--space-xl);">
         <span class="section-subtitle">Soluções Complementares</span>
-        <h2 class="section-title">Equipamentos Relacionados</h2>
-        <p class="section-desc">Combine outras soluções para compor a infraestrutura completa do seu evento.</p>
+        <h2 class="section-title">Equipamentos Frequentemente Alugados Juntos</h2>
       </div>
 
       <div class="grid grid-3" id="related-products-grid"></div>
@@ -62,10 +67,9 @@
   <div id="site-footer-container"></div>
 
   <!-- Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/components.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
-
