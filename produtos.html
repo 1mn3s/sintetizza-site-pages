@@ -3,20 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Produtos & Soluções | Sintetizza Eventos</title>
-  <meta name="description" content="Explore o catálogo completo de equipamentos para locação: palcos box truss, som line array, tendas, galpões, geradores e painéis de LED em Sorocaba e região.">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <title>Catálogo de Equipamentos e Estruturas | Sintetizza Eventos</title>
+  <meta name="description" content="Catálogo completo de palcos Box Truss, tendas galpão, painéis de LED, climatização, geradores e estruturas para locação em Sorocaba e região.">
+  <meta name="keywords" content="catalogo sintetizza, locacao palcos sorocaba, painel led p3.9 aluguel, tendas para eventos, geradores para eventos">
+  <link rel="canonical" href="https://www.sintetizza.com.br/produtos.html">
   
-  <!-- Fontes Google -->
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/logoAuzl.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/logoAuzl.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#F1CF00">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sintetizza.com.br/produtos.html">
+  <meta property="og:title" content="Catálogo de Equipamentos | Sintetizza Eventos">
+  <meta property="og:description" content="Confira nossos equipamentos para eventos: palcos, tendas, painéis de LED, climatização e geradores.">
+  <meta property="og:image" content="https://www.sintetizza.com.br/https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/logo.png">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Catálogo de Equipamentos e Soluções para Eventos",
+    "description": "Locação de palcos Box Truss, painéis de LED, climatização, tendas e geradores.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Sintetizza Eventos",
+      "telephone": "+5515997339422"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -33,7 +62,7 @@
       </div>
       <h1 class="page-banner-title">Catálogo de Equipamentos</h1>
       <p class="page-banner-desc">
-        Selecione os equipamentos necessários para o seu evento e monte sua proposta técnica em poucos cliques.
+        Explore o catálogo completo Sintetizza 2026 com estruturas, vídeo, climatização, mobiliário, camarim, decoração e apoio operacional.
       </p>
     </div>
   </section>
@@ -41,38 +70,82 @@
   <!-- Catálogo Principal -->
   <section class="section section-light">
     <div class="container">
-      
-      <!-- Busca e Filtros -->
-      <div class="catalog-toolbar">
-        <div class="search-box">
-          <input type="text" id="catalog-search-input" placeholder="Buscar por palco, tenda, som, led, gerador, climatizador...">
+      <div class="grid grid-3" style="margin-bottom: var(--space-2xl);">
+        <div class="feature-card">
+          <div class="feature-icon-badge">📦</div>
+          <h3 class="feature-title">Portfólio Amplo</h3>
+          <p class="feature-desc">Da locação de um item à infraestrutura completa, o catálogo reúne estruturas, coberturas, mobiliário, camarim, decoração e apoio.</p>
         </div>
-        <div id="catalog-results-count" style="font-weight: 700; color: var(--color-slate-600); font-size: 0.95rem;">
-          Carregando catálogo...
+        <div class="feature-card">
+          <div class="feature-icon-badge">📐</div>
+          <h3 class="feature-title">Projetos Personalizados</h3>
+          <p class="feature-desc">Também atendemos coberturas em Box Truss, pórticos, backdrops, praticáveis e estruturas sob medida conforme o layout do evento.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-badge">🧯</div>
+          <h3 class="feature-title">Segurança e Documentação</h3>
+          <p class="feature-desc">Conte com engenharia, ART, suporte a AVCB, elétrica, staff e operação técnica para eventos corporativos, públicos e sociais.</p>
         </div>
       </div>
 
-      <!-- Filtros por Categoria -->
-      <div class="category-filter-bar" id="category-filter-tabs"></div>
+      <div class="catalog-download-panel">
+        <div>
+          <span class="catalog-download-kicker">Catálogo Completo</span>
+          <h2>Catálogo Sintetizza 2026</h2>
+          <p>Confira todos os equipamentos, estruturas e especificações técnicas em um único arquivo.</p>
+        </div>
+        <a href="https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/CATALOGO%20NOVO%20SINTETIZZA%202026%20.pdf.pdf" class="btn btn-primary btn-lg" download>
+          Baixar Catálogo em PDF
+        </a>
+      </div>
+      
+      <!-- Busca e Contador -->
+      <div class="catalog-toolbar">
+        <div class="search-box">
+          <input type="text" id="catalog-search-input" placeholder="🔍 Buscar por palco, tenda, painel de LED, gerador..." aria-label="Buscar equipamentos">
+        </div>
+        <div id="catalog-results-count" style="font-weight: 700; color: var(--color-text-secondary); font-size: 0.95rem;">
+          Carregando catálogo técnico...
+        </div>
+      </div>
+
+      <!-- Abas de Filtros por Categoria -->
+      <div class="category-filter-bar" id="category-filter-tabs" role="tablist" aria-label="Categorias de produtos"></div>
 
       <!-- Grid de Produtos -->
       <div class="grid grid-3" id="catalog-products-grid"></div>
 
+      <div class="city-tags-grid" style="margin-top: var(--space-xl);">
+        <span class="city-tag-chip">Corporativos</span>
+        <span class="city-tag-chip">Feiras e exposições</span>
+        <span class="city-tag-chip">Shows e festivais</span>
+        <span class="city-tag-chip">Eventos esportivos</span>
+        <span class="city-tag-chip">Casamentos</span>
+        <span class="city-tag-chip">Eventos públicos</span>
+        <span class="city-tag-chip">Congressos</span>
+        <span class="city-tag-chip">Ações promocionais</span>
+      </div>
+
     </div>
   </section>
 
-  <!-- Banner Projetos Sob Medida -->
-  <section class="section section-dark">
+  <!-- Projetos Sob Medida -->
+  <section class="section section-white">
     <div class="container">
-      <div class="cta-banner" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-        <span class="badge badge-brand" style="margin-bottom: 12px;">Projetos de Engenharia</span>
-        <h2 style="margin-bottom: 12px; color: var(--color-white);">Precisa de uma Estrutura Sob Medida?</h2>
-        <p style="max-width: 620px; margin: 0 auto 24px auto; color: var(--color-slate-300); font-size: 1.05rem;">
-          Desenvolvemos layouts em CAD/3D e soluções customizadas para palcos atípicos, galpões de grande vão livre e eventos governamentais.
+      <div class="cta-banner">
+        <span class="badge badge-brand" style="margin-bottom: 10px;">Projetos sob Medida</span>
+        <h2 style="margin-bottom: 10px;">Precisa de uma Estrutura Sob Medida?</h2>
+        <p style="max-width: 620px; margin: 0 auto 20px auto; font-size: 1rem;">
+          Desenvolvemos layouts técnicos em 3D, cálculos de carga e projetos customizados para palcos atípicos, galpões especiais e eventos corporativos de grande porte.
         </p>
-        <a href="orcamento.html" class="btn btn-primary btn-lg">
-          <span>Solicitar Proposta Customizada</span>
-        </a>
+        <div class="flex items-center justify-center gap-md" style="flex-wrap: wrap;">
+          <a href="orcamento.html" class="btn btn-primary btn-lg">
+            <span>📋 Solicitar Proposta Customizada</span>
+          </a>
+          <a href="https://wa.me/5515997339422?text=Olá!%20Preciso%20de%20um%20projeto%20de%20estrutura%20sob%20medida." target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+            <span>💬 Falar no WhatsApp</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -81,10 +154,9 @@
   <div id="site-footer-container"></div>
 
   <!-- Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/components.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
-
