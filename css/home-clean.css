@@ -22,7 +22,7 @@
   inset: 0;
   background:
     linear-gradient(90deg, rgba(25, 30, 43, 0.96) 0%, rgba(25, 30, 43, 0.78) 48%, rgba(25, 30, 43, 0.38) 100%),
-    url("../assets/images/galpoes.png") center/cover no-repeat;
+    url("https://raw.githubusercontent.com/1mn3s/sintetizza_site/main/assets/images/galpoes.png") center/cover no-repeat;
 }
 
 .clean-hero-inner {
@@ -96,6 +96,36 @@
   color: rgba(255,255,255,0.72);
   font-size: 0.88rem;
   font-weight: 600;
+}
+
+
+.clean-clients {
+  padding: 26px 0 30px;
+  background: #fff;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.clean-clients-label {
+  margin: 0 0 8px;
+  color: var(--color-slate-500);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clean-clients .client-logo-marquee {
+  padding: 10px 0 4px;
+}
+
+.clean-clients .client-logo-set img {
+  height: 58px;
+  opacity: 0.66;
+}
+
+.clean-clients .client-logo-set img:hover {
+  opacity: 1;
 }
 
 .clean-section {
