@@ -26,7 +26,81 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactPage();
   initScrollReveal();
   initHeroImageRotation();
+  initSectionScrollPause();
 });
+
+
+function initSectionScrollPause() {
+  if (!document.body.classList.contains("home-page")) return;
+  if (window.innerWidth < 769) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const sections = [...document.querySelectorAll("main > section")]
+    .filter(section => !section.classList.contains("clean-clients"));
+
+  if (sections.length < 2) return;
+
+  let locked = false;
+  let unlockTimer = null;
+
+  const getCurrentIndex = () => {
+    const probe = window.scrollY + (window.innerHeight * 0.42);
+    let bestIndex = 0;
+    let bestDistance = Infinity;
+
+    sections.forEach((section, index) => {
+      const distance = Math.abs(section.offsetTop - probe);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestIndex = index;
+      }
+    });
+
+    return bestIndex;
+  };
+
+  const goToSection = (index) => {
+    if (index < 0 || index >= sections.length) return false;
+
+    locked = true;
+    const header = document.querySelector(".site-header, header");
+    const headerOffset = header ? header.getBoundingClientRect().height : 0;
+    const targetTop = Math.max(0, sections[index].offsetTop - headerOffset);
+
+    window.scrollTo({
+      top: targetTop,
+      behavior: "smooth"
+    });
+
+    clearTimeout(unlockTimer);
+    unlockTimer = window.setTimeout(() => {
+      locked = false;
+    }, 720);
+
+    return true;
+  };
+
+  window.addEventListener("wheel", (event) => {
+    if (locked) {
+      event.preventDefault();
+      return;
+    }
+
+    if (Math.abs(event.deltaY) < 12) return;
+
+    const interactive = event.target.closest("input, textarea, select, [contenteditable='true'], .gallery-lightbox");
+    if (interactive) return;
+
+    const current = getCurrentIndex();
+    const direction = event.deltaY > 0 ? 1 : -1;
+    const target = current + direction;
+
+    if (target < 0 || target >= sections.length) return;
+
+    event.preventDefault();
+    goToSection(target);
+  }, { passive: false });
+}
 
 function initHeroImageRotation() {
   const slides = [...document.querySelectorAll(".hero-background-slide")];
