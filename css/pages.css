@@ -330,19 +330,24 @@
   overflow: hidden;
   padding: 14px 0;
   mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
 }
 
 .client-logo-track {
   display: flex;
   width: max-content;
-  animation: client-logo-scroll 42s linear infinite;
+  gap: 0;
+  animation: client-logo-scroll 32s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 .client-logo-set {
   display: flex;
   align-items: center;
   gap: clamp(28px, 4vw, 64px);
-  flex: none;
+  flex: 0 0 auto;
   padding-right: clamp(28px, 4vw, 64px);
 }
 
@@ -350,7 +355,7 @@
   width: clamp(104px, 11vw, 150px);
   height: 66px;
   object-fit: contain;
-  flex: none;
+  flex: 0 0 auto;
   filter: grayscale(1);
   opacity: 0.72;
   transition: filter var(--transition-base), opacity var(--transition-base), transform var(--transition-base);
@@ -363,11 +368,20 @@
 }
 
 @keyframes client-logo-scroll {
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+  .client-logo-track {
+    animation-duration: 26s;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .client-logo-track { animation-duration: 84s; }
+  .client-logo-track {
+    animation-duration: 64s;
+  }
 }
 
 .gallery-viewer {
