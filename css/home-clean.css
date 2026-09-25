@@ -129,16 +129,58 @@
 }
 
 .clean-clients .client-logo-marquee {
+  overflow: hidden;
+  width: 100%;
   padding: 10px 0 4px;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.clean-clients .client-logo-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: clean-client-logo-scroll 34s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.clean-clients .client-logo-set {
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 4vw, 64px);
+  flex: 0 0 auto;
+  padding-right: clamp(28px, 4vw, 64px);
 }
 
 .clean-clients .client-logo-set img {
+  width: clamp(104px, 11vw, 150px);
   height: 58px;
+  flex: 0 0 auto;
+  object-fit: contain;
   opacity: 0.66;
 }
 
 .clean-clients .client-logo-set img:hover {
   opacity: 1;
+}
+
+@keyframes clean-client-logo-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (max-width: 768px) {
+  .clean-clients .client-logo-track {
+    animation-duration: 28s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clean-clients .client-logo-track {
+    animation-duration: 68s !important;
+    animation-iteration-count: infinite !important;
+  }
 }
 
 .clean-section {
