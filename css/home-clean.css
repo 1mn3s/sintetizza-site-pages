@@ -537,3 +537,54 @@
     gap: 28px;
   }
 }
+
+
+/* Prioridade comercial da Home: serviços anunciados no Google Ads */
+.clean-services-grid-priority {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.clean-secondary-solutions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 28px;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.clean-secondary-solutions p {
+  margin: 0;
+  max-width: 760px;
+  color: var(--color-slate-600);
+  line-height: 1.7;
+}
+
+.clean-secondary-solutions .clean-text-link {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+@media (max-width: 1050px) {
+  .clean-services-grid-priority {
+    grid-template-columns: 1fr;
+  }
+
+  .clean-services-grid-priority .clean-service-card,
+  .clean-services-grid-priority .clean-service-card:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  .clean-services-grid-priority .clean-service-card:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .clean-secondary-solutions {
+    display: grid;
+    gap: 12px;
+  }
+}
