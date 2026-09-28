@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sintetizza Eventos | Estruturas para Eventos em Sorocaba e Região</title>
-  <meta name="description" content="Locação e montagem de palcos, tendas, galpões, painéis de LED, geradores e estruturas para eventos em Sorocaba e região. Atendimento técnico, ART e operação integrada.">
+  <title>Sintetizza Eventos | Tendas, Climatização e Estruturas em Sorocaba</title>
+  <meta name="description" content="Locação de tendas, climatizadores, banheiros químicos e estruturas para eventos em Sorocaba e região. Orçamento rápido, montagem e suporte técnico.">
   <meta name="author" content="Sintetizza Eventos">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://sintetizzalocacoes.com.br/">
@@ -96,7 +96,7 @@
   }
   </script>
 </head>
-<body class="home-page">
+<body class="home-page" data-service="site" data-service-label="Orçamento pelo site">
   <div id="site-header-container"></div>
 
   <main>
@@ -158,6 +158,31 @@
       </div>
     </section>
 
+
+    <section class="clean-lead-section" aria-labelledby="home-lead-title">
+      <div class="container clean-lead-layout">
+        <div class="clean-lead-copy">
+          <p class="clean-eyebrow clean-eyebrow-dark">Orçamento rápido</p>
+          <h2 id="home-lead-title">Conte o essencial. A gente continua pelo WhatsApp.</h2>
+          <p>Um formulário curto para você não perder tempo. Para campanhas específicas, as páginas de Tendas, Climatizadores e Banheiros já levam direto ao serviço anunciado.</p>
+        </div>
+        <form class="clean-lead-form" data-lead-form>
+          <label>Nome<input name="nome" autocomplete="name" required></label>
+          <label>WhatsApp<input name="telefone" inputmode="tel" autocomplete="tel" required></label>
+          <label>Cidade<input name="cidade" autocomplete="address-level2" required></label>
+          <label>Serviço
+            <select name="servico">
+              <option value="Tendas e coberturas">Tendas e coberturas</option>
+              <option value="Climatizadores">Climatizadores</option>
+              <option value="Banheiros químicos">Banheiros químicos</option>
+              <option value="Outras soluções para eventos">Outras soluções</option>
+            </select>
+          </label>
+          <label>Data do evento<input name="dataEvento" type="date"></label>
+          <button type="submit" class="btn btn-primary">Solicitar orçamento</button>
+        </form>
+      </div>
+    </section>
 
     <section class="clean-clients" aria-label="Marcas atendidas">
       <div class="container">
@@ -269,5 +294,6 @@
   <script src="js/cart.js" defer></script>
   <script src="js/components.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/landing.js" defer></script>
 </body>
 </html>
