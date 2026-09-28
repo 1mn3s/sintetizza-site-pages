@@ -656,3 +656,116 @@
 @media(max-width:600px){
   .clean-lead-form{grid-template-columns:1fr;padding:20px}
 }
+
+
+/* Cards visuais dos serviços prioritários da Home */
+.clean-services-visual {
+  gap: 18px;
+  border: 0;
+}
+
+.clean-service-card-visual {
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(18, 24, 38, 0.06);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.clean-service-card-visual:last-child {
+  border-right: 1px solid var(--color-border-light);
+}
+
+.clean-service-card-visual:hover {
+  background: #fff;
+  transform: translateY(-4px);
+  border-color: rgba(250, 90, 0, .28);
+  box-shadow: 0 14px 34px rgba(18, 24, 38, 0.10);
+}
+
+.clean-service-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-slate-200);
+}
+
+.clean-service-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 58%, rgba(14, 18, 28, .34) 100%);
+  pointer-events: none;
+}
+
+.clean-service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.clean-service-card-visual:hover .clean-service-image img {
+  transform: scale(1.025);
+}
+
+.clean-service-badge {
+  position: absolute;
+  z-index: 1;
+  left: 16px;
+  bottom: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-slate-950);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.clean-service-content {
+  padding: 24px 24px 26px;
+}
+
+.clean-service-content .clean-service-number {
+  margin-bottom: 14px;
+}
+
+.clean-service-content h3 {
+  margin-bottom: 10px;
+}
+
+.clean-service-content p {
+  min-height: 0;
+  margin-bottom: 8px;
+}
+
+.clean-service-content .clean-text-link {
+  margin-top: 8px;
+}
+
+@media (max-width: 1050px) {
+  .clean-services-grid-priority.clean-services-visual {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clean-services-grid-priority.clean-services-visual .clean-service-card,
+  .clean-services-grid-priority.clean-services-visual .clean-service-card:nth-child(2) {
+    border: 1px solid var(--color-border-light);
+  }
+}
+
+@media (max-width: 760px) {
+  .clean-services-grid-priority.clean-services-visual {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .clean-service-content {
+    padding: 20px 20px 22px;
+  }
+}
