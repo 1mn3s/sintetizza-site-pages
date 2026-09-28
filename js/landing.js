@@ -15,15 +15,24 @@
     const telefone = (data.get("telefone") || "").toString().trim();
     const cidade = (data.get("cidade") || "").toString().trim();
     const dataEvento = (data.get("dataEvento") || "").toString().trim();
+    const servicoEscolhido = (data.get("servico") || "").toString().trim();
+    const leadService = servicoEscolhido || serviceLabel;
 
     if (!nome || !telefone || !cidade) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "generate_lead",
+      lead_service: leadService,
+      lead_city: cidade
+    });
 
     const params = new URLSearchParams(location.search);
     const origem = params.get("utm_campaign") || params.get("gclid") || "site";
     const mensagem = [
       "Olá! Quero solicitar um orçamento pela página da Sintetizza.",
       "",
-      "Serviço: " + serviceLabel,
+      "Serviço: " + leadService,
       "Nome: " + nome,
       "Telefone: " + telefone,
       "Cidade: " + cidade,
