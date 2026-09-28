@@ -185,42 +185,6 @@ function renderFooter() {
   const footerLogosDuplicate = clientLogos.map(({ src }) => `<img src="${src}" alt="" loading="lazy">`).join("");
 
   footerElem.innerHTML = `
-    <!-- Barra de Confiança Pré-Footer -->
-    <div class="footer-trust-strip">
-      <div class="container">
-        <div class="trust-strip-grid">
-          <div class="trust-strip-item">
-            <span class="trust-icon-box">✓</span>
-            <div>
-              <strong>Montagem Segura & ART Inclusa</strong>
-              <p>Normas NR-10 e NR-35 com responsabilidade técnica.</p>
-            </div>
-          </div>
-          <div class="trust-strip-item">
-            <span class="trust-icon-box">⚡</span>
-            <div>
-              <strong>Plantão Operacional 24h</strong>
-              <p>Suporte e técnicos presentes em todo o evento.</p>
-            </div>
-          </div>
-          <div class="trust-strip-item">
-            <span class="trust-icon-box">★</span>
-            <div>
-              <strong>Nota 4.9 no Google Reviews</strong>
-              <p>Mais de 10.000 eventos realizados com experiência e pontualidade.</p>
-            </div>
-          </div>
-          <div class="trust-strip-item">
-            <span class="trust-icon-box">🚚</span>
-            <div>
-              <strong>Frota Própria & Montagem Rápida</strong>
-              <p>Sorocaba, Itu, Campinas, São Paulo e todo o interior.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Footer Principal -->
     <footer class="site-footer">
       <div class="container">
@@ -233,7 +197,7 @@ function renderFooter() {
               Locação e montagem de palcos, tendas, painéis de LED, climatizadores, geradores de energia e infraestrutura para eventos.
             </p>
             <div class="google-badge-card">
-              <div class="google-stars">★★★★★</div>
+              <div class="google-stars"></div>
               <div style="font-weight: 800; color: var(--color-text-primary); font-size: 0.95rem;">Nota 4.9 no Google</div>
               <div style="font-size: 0.8rem; color: var(--color-text-secondary);">(+128 avaliações reais de clientes)</div>
             </div>
@@ -326,7 +290,7 @@ function renderFooter() {
                 </div>
               </div>
               <div class="footer-contact-item">
-                <span class="footer-contact-icon">🕒</span>
+                <span class="footer-contact-bullet">•</span>
                 <span>${SINTETIZZA_CONFIG.serviceHours}</span>
               </div>
             </div>
@@ -443,7 +407,7 @@ function createProductCardHTML(product) {
           <button class="btn btn-sm btn-primary btn-add-quote ${isAdded ? 'added' : ''}" 
                   onclick="handleToggleQuote('${product.id}', this)"
                   aria-label="${isAdded ? 'Item já adicionado' : 'Adicionar ao orçamento'}">
-            ${isAdded ? '✓ No Orçamento' : '+ Adicionar'}
+            ${isAdded ? ' No Orçamento' : '+ Adicionar'}
           </button>
           <a href="produto-detalhe.html?id=${product.id}" class="btn btn-sm btn-dark" title="Ver Ficha Técnica">
             Detalhes ➔
@@ -485,13 +449,13 @@ function renderGoogleReviewsGrid(containerId) {
         <div class="review-meta">
           <div class="review-author">
             ${r.author}
-            ${r.verified ? '<span class="review-badge-verified" title="Cliente Verificado">✓ Verificado</span>' : ''}
+            ${r.verified ? '<span class="review-badge-verified" title="Cliente Verificado"> Verificado</span>' : ''}
           </div>
           <div class="review-role">${r.role} • ${r.city}</div>
         </div>
       </div>
       <div class="review-rating">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"></div>
         <span class="review-date">${r.date}</span>
       </div>
       <p class="review-text">"${r.text}"</p>
@@ -597,7 +561,7 @@ window.handleToggleQuote = function(productId, btnElem) {
     QuoteCart.addItem(productId, 1);
     if (btnElem) {
       btnElem.classList.add("added");
-      btnElem.innerHTML = "✓ Adicionado";
+      btnElem.innerHTML = " Adicionado";
     }
     showToast(`"${product.name}" adicionado ao orçamento!`, "success");
   }
