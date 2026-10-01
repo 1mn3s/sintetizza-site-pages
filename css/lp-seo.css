@@ -96,3 +96,40 @@
 @media(max-width:620px){
   .visual-card{min-height:300px}
 }
+
+
+/* Banheiro químico: imagem limpa, sem camada/efeito sobre a foto */
+.visual-card-clean{
+  background:#fff;
+  display:flex;
+  flex-direction:column;
+}
+.visual-card-clean::after{display:none}
+.visual-card-clean img{
+  position:relative;
+  inset:auto;
+  width:100%;
+  height:245px;
+  object-fit:cover;
+  object-position:center;
+  filter:none!important;
+  transform:none!important;
+}
+.visual-card-clean:hover img{
+  filter:none!important;
+  transform:none!important;
+}
+.visual-card-clean .visual-card-overlay{
+  position:relative;
+  inset:auto;
+  background:#fff;
+  color:var(--ink);
+  padding:22px 24px 24px;
+}
+.visual-card-clean .visual-card-overlay h3{
+  color:var(--ink);
+  text-shadow:none;
+}
+.visual-card-clean .visual-card-overlay p{
+  color:var(--muted);
+}
