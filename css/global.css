@@ -112,28 +112,19 @@ ul, ol {
 @media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
   html.screen-scroll {
     scroll-snap-type: y proximity;
-    scroll-behavior: smooth;
   }
 
-  .home-page main > section,
+  .home-page > section,
   .home-page > #site-footer-container {
     scroll-snap-align: start;
-    scroll-snap-stop: always;
     scroll-margin-top: var(--header-height);
   }
 
-  .home-page main > .clean-hero,
-  .home-page main > .clean-section,
-  .home-page main > .clean-cta {
+  .home-page > section {
     min-height: calc(100svh - var(--header-height));
   }
 
-  .home-page main > .clean-clients {
-    min-height: auto;
-    scroll-snap-align: none;
-  }
-
-  .home-page main > .clean-hero {
+  .home-page > .hero-section {
     min-height: 100svh;
   }
 }
@@ -250,6 +241,7 @@ ul, ol {
 
 .badge-dark {
   background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
   color: var(--color-slate-100);
 }
 
@@ -261,6 +253,7 @@ ul, ol {
 .badge-ghost {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-slate-200);
+  backdrop-filter: blur(6px);
 }
 
 /* Buttons */
@@ -340,6 +333,7 @@ button:focus-visible {
   background-color: transparent;
   color: var(--color-white);
   border: 1.5px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
 }
 
 .btn-outline-white:hover {
